@@ -14,7 +14,14 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var networkService = TINetworkService()
 
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(
+		application: UIApplication,
+		didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?
+	) -> Bool {
+
+		// apply theme
+		let theme = TITheme.Default
+		TIThemeManager.applyTheme(theme)
 
 		return true
 	}
