@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  TIAppDelegate.swift
 //  TICodeChallenge
 //
 //  Created by Ian on 7/29/16.
@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class TIAppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
