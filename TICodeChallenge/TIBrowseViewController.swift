@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 // This class is created for generic table view for displaying
 // TuneIn's opml outline items. However, it only provide 2 level depth.
@@ -27,9 +29,6 @@ final class TIBrowseViewController: UIViewController {
 		super.viewDidLoad()
 		navigationController?.setNavigationBarHidden(false, animated: false)
 		title = browseItem.title ?? temporaryTitle
-
-		tableView.sectionIndexColor = UIColor.blueColor()
-		tableView.sectionIndexBackgroundColor = UIColor.greenColor()
 	}
 
 	func isChildrenExist(outlines: [TIOutline]) -> Bool {
@@ -82,8 +81,32 @@ final class TIBrowseViewController: UIViewController {
 		}
 	}
 
-	func loadAudio(service: TINetworkService, path: String) {
+	func loadAudio(with path: String) {
+		guard let url = NSURL(string: path) else {
+			// TODO: alert view
+			print("can't play music. wrong url")
+			return
+		}
 
+		performSegueWithIdentifier("streamingSegue", sender: url)
+	}
+
+
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "streamingSegue" {
+			guard let url = sender as? NSURL else {
+				print("can't play music. wrong or missing url")
+				return
+			}
+
+			guard let destination =
+				segue.destinationViewController as? AVPlayerViewController else {
+				print("can't open streaming player. Wrong player is assigned")
+				return
+			}
+
+			destination.player = AVPlayer(URL: url)
+		}
 	}
 }
 
@@ -151,6 +174,8 @@ extension TIBrowseViewController: UITableViewDelegate {
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
 		let item = getOutline(from: indexPath)
 		guard let path = item.URL else {
 			// TODO: alert popup
@@ -164,7 +189,7 @@ extension TIBrowseViewController: UITableViewDelegate {
 		case .link:
 			loadLink(networkService, path: path)
 		case .audio:
-			print("Not implemted yet")
+			loadAudio(with: path)
 		case .undefined:
 			print("Wrong type")
 		}

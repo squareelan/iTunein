@@ -127,11 +127,20 @@
                     <navigationItem key="navigationItem" id="08I-Ns-95Z"/>
                     <connections>
                         <outlet property="tableView" destination="ibn-Dh-O4n" id="zbi-W5-vDb"/>
+                        <segue destination="pJM-XG-Mcu" kind="presentation" identifier="streamingSegue" id="c8F-wg-VGZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-385" y="1049"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="ZfU-59-0Cy">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="pJM-XG-Mcu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLf-gT-Mhg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="1049"/>
         </scene>
     </scenes>
 </document>
