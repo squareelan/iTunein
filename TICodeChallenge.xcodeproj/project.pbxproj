@@ -13,6 +13,8 @@
 		3C8C540D1D4C57AB0028C099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540C1D4C57AB0028C099 /* Assets.xcassets */; };
 		3C8C54101D4C57AB0028C099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540E1D4C57AB0028C099 /* LaunchScreen.storyboard */; };
 		3C8C541B1D4C57AB0028C099 /* TICodeChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */; };
+		412725695F6783CDA6CF3472 /* Pods_TICodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */; };
+		A6D8B4DC25B697BCA70F9D08 /* Pods_TICodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		3C8C54021D4C57AB0028C099 /* TICodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TICodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIAppDelegate.swift; sourceTree = "<group>"; };
 		3C8C54071D4C57AB0028C099 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +39,11 @@
 		3C8C54161D4C57AB0028C099 /* TICodeChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TICodeChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICodeChallengeTests.swift; sourceTree = "<group>"; };
 		3C8C541C1D4C57AB0028C099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TICodeChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TICodeChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		D0138C36B3F0BB6EE5499234 /* Pods-TICodeChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		DDC1374D1A22653C07EE788A /* Pods-TICodeChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D8B4DC25B697BCA70F9D08 /* Pods_TICodeChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				412725695F6783CDA6CF3472 /* Pods_TICodeChallengeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				3C8C54041D4C57AB0028C099 /* TICodeChallenge */,
 				3C8C54191D4C57AB0028C099 /* TICodeChallengeTests */,
 				3C8C54031D4C57AB0028C099 /* Products */,
+				8B2538F21A97470FC30A9125 /* Pods */,
+				4DB3EAAA6B1331F4930900BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,26 @@
 			path = TICodeChallengeTests;
 			sourceTree = "<group>";
 		};
+		4DB3EAAA6B1331F4930900BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */,
+				7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B2538F21A97470FC30A9125 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */,
+				39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */,
+				DDC1374D1A22653C07EE788A /* Pods-TICodeChallengeTests.debug.xcconfig */,
+				D0138C36B3F0BB6EE5499234 /* Pods-TICodeChallengeTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C8C541F1D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallenge" */;
 			buildPhases = (
+				798B18C50BEAC61B8514DC70 /* [CP] Check Pods Manifest.lock */,
 				3C8C53FE1D4C57AB0028C099 /* Sources */,
 				3C8C53FF1D4C57AB0028C099 /* Frameworks */,
 				3C8C54001D4C57AB0028C099 /* Resources */,
+				67615ED9FAD7A620B90DC10E /* [CP] Embed Pods Frameworks */,
+				492479665E2B5ECE5209F476 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C8C54221D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallengeTests" */;
 			buildPhases = (
+				C2AE7590F345559FD0ADA222 /* [CP] Check Pods Manifest.lock */,
 				3C8C54121D4C57AB0028C099 /* Sources */,
 				3C8C54131D4C57AB0028C099 /* Frameworks */,
 				3C8C54141D4C57AB0028C099 /* Resources */,
+				E87431E11A8A1C304E8DA3D7 /* [CP] Embed Pods Frameworks */,
+				CBB618F4DE653D15C0AA458E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,12 +230,112 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		492479665E2B5ECE5209F476 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67615ED9FAD7A620B90DC10E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		798B18C50BEAC61B8514DC70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C2AE7590F345559FD0ADA222 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CBB618F4DE653D15C0AA458E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E87431E11A8A1C304E8DA3D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3C8C53FE1D4C57AB0028C099 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C8C54081D4C57AB0028C099 /* ViewController.swift in Sources */,
+				3C8C54371D4C8B600028C099 /* TILoadingViewController.swift in Sources */,
+				3C8C542F1D4C62560028C099 /* Result.swift in Sources */,
+				3C8C54271D4C5DDF0028C099 /* TIBrowserViewModel.swift in Sources */,
+				3C8C54081D4C57AB0028C099 /* TIBrowseViewController.swift in Sources */,
+				3C8C54311D4C638A0028C099 /* HttpMethod.swift in Sources */,
+				3C8C54331D4C66A90028C099 /* JsonDeserializable.swift in Sources */,
+				3C8C542D1D4C606B0028C099 /* TINetworkService.swift in Sources */,
+				3C8C54351D4C6B2D0028C099 /* TIBrowse.swift in Sources */,
 				3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +463,7 @@
 		};
 		3C8C54201D4C57AB0028C099 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TICodeChallenge/Info.plist;
@@ -336,6 +475,7 @@
 		};
 		3C8C54211D4C57AB0028C099 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TICodeChallenge/Info.plist;
@@ -347,6 +487,7 @@
 		};
 		3C8C54231D4C57AB0028C099 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDC1374D1A22653C07EE788A /* Pods-TICodeChallengeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TICodeChallengeTests/Info.plist;
@@ -359,6 +500,7 @@
 		};
 		3C8C54241D4C57AB0028C099 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0138C36B3F0BB6EE5499234 /* Pods-TICodeChallengeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TICodeChallengeTests/Info.plist;
@@ -388,6 +530,7 @@
 				3C8C54211D4C57AB0028C099 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C8C54221D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallengeTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +539,7 @@
 				3C8C54241D4C57AB0028C099 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

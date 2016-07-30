@@ -1,0 +1,6 @@
+framework module Pods_TICodeChallengeTests {
+  umbrella header "Pods-TICodeChallengeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
