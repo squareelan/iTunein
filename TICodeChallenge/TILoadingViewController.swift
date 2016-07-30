@@ -40,11 +40,11 @@ final class TILoadingViewController: UIViewController {
 
 			case .success(let value):
 
-				// TODO: refactor it as extension
-				let storyboard = UIStoryboard(name: "Main", bundle: nil)
-				let vc = storyboard.instantiateViewControllerWithIdentifier(
-					"TIBrowseViewController"
-				) as! TIBrowseViewController
+				let storyboard = UIStoryboard.mainStoryboard()
+				guard let vc: TIBrowseViewController = storyboard.instantiateViewController() else {
+					return
+				}
+				
 
 				vc.browseItem = value
 				vc.temporaryTitle = value.title

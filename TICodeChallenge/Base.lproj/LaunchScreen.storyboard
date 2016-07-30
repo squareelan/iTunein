@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TuneIn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQT-5L-uln">
-                                <rect key="frame" x="260" y="264" width="81" height="33"/>
+                                <rect key="frame" x="260" y="234" width="81" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usP-J4-u8X">
-                                <rect key="frame" x="250" y="305" width="101" height="17"/>
+                                <rect key="frame" x="250" y="275" width="101" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.85882352939999995" green="0.41176470590000003" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="mQT-5L-uln" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="19V-W8-V0n"/>
+                            <constraint firstItem="mQT-5L-uln" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="19V-W8-V0n"/>
                             <constraint firstItem="usP-J4-u8X" firstAttribute="top" secondItem="mQT-5L-uln" secondAttribute="bottom" constant="8" id="LF6-jA-sPr"/>
                             <constraint firstItem="usP-J4-u8X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WCf-fz-hyI"/>
                             <constraint firstItem="mQT-5L-uln" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="w63-M8-Gy0"/>

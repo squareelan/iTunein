@@ -7,6 +7,7 @@
 //
 
 struct TIBrowseViewModel {
+	
 	let numberOfSections: Int
 	let numberOfRows: Int
 }

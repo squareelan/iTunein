@@ -58,15 +58,21 @@ final class TIBrowseViewController: UIViewController {
 
 	func loadLink(service: TINetworkService, path: String) {
 
+		self.startNetworkActivityIndicator(isInteractionEnabled: false)
 		service.simpleTIGetRequest(
 			with: path
 		) { (result: Result<TIBrowse>) in
-			switch result {
 
+			self.stoptNetworkActivityIndicator()
+
+			switch result {
 			case .success(let value):
-				// TODO: refactor
-				let storyboard = UIStoryboard(name: "Main", bundle: nil)
-				let vc = storyboard.instantiateViewControllerWithIdentifier("TIBrowseViewController") as! TIBrowseViewController
+
+				let storyboard = UIStoryboard.mainStoryboard()
+				guard let vc: TIBrowseViewController = storyboard.instantiateViewController() else {
+					// error handling?
+					return
+				}
 
 				vc.temporaryTitle = self.temporaryTitle
 				vc.browseItem = value

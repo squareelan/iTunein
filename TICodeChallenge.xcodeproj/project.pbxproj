@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C7B27E91D4D6CE7001D03DD /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27E71D4D6CE7001D03DD /* UIStoryboard+Extension.swift */; };
+		3C7B27EA1D4D6CE7001D03DD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */; };
 		3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */; };
 		3C8C54081D4C57AB0028C099 /* TIBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */; };
 		3C8C540B1D4C57AB0028C099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C54091D4C57AB0028C099 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		3C7B27E71D4D6CE7001D03DD /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3C8C54021D4C57AB0028C099 /* TICodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TICodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIAppDelegate.swift; sourceTree = "<group>"; };
 		3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIBrowseViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C7B27EB1D4D6CF7001D03DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3C7B27EC1D4D6CFE001D03DD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
 		3C8C53F91D4C57AB0028C099 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +137,8 @@
 			children = (
 				3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */,
 				3C8C54251D4C5B370028C099 /* Service */,
-				3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */,
-				3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */,
+				3C7B27EB1D4D6CF7001D03DD /* Model */,
+				3C7B27EC1D4D6CFE001D03DD /* ViewModel */,
 				3C8C543A1D4CE2950028C099 /* ViewController */,
 				3C8C54461D4CEC6F0028C099 /* Storyboard */,
 				3C8C544C1D4CED8E0028C099 /* Theme */,
@@ -162,6 +182,8 @@
 			children = (
 				3C8C543F1D4CEB240028C099 /* UIColor+Extension.swift */,
 				3C8C54411D4CEB490028C099 /* String+Extension.swift */,
+				3C7B27E71D4D6CE7001D03DD /* UIStoryboard+Extension.swift */,
+				3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -417,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7B27EA1D4D6CE7001D03DD /* UIViewController+Extension.swift in Sources */,
 				3C8C54371D4C8B600028C099 /* TILoadingViewController.swift in Sources */,
 				3C8C542F1D4C62560028C099 /* Result.swift in Sources */,
 				3C8C544B1D4CED890028C099 /* TIThemeManager.swift in Sources */,
@@ -431,6 +454,7 @@
 				3C8C54351D4C6B2D0028C099 /* TIBrowse.swift in Sources */,
 				3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */,
 				3C8C54491D4CED7E0028C099 /* TITheme.swift in Sources */,
+				3C7B27E91D4D6CE7001D03DD /* UIStoryboard+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
