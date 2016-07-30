@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */; };
-		3C8C54081D4C57AB0028C099 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54071D4C57AB0028C099 /* ViewController.swift */; };
+		3C8C54081D4C57AB0028C099 /* TIBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */; };
 		3C8C540B1D4C57AB0028C099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C54091D4C57AB0028C099 /* Main.storyboard */; };
 		3C8C540D1D4C57AB0028C099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540C1D4C57AB0028C099 /* Assets.xcassets */; };
 		3C8C54101D4C57AB0028C099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540E1D4C57AB0028C099 /* LaunchScreen.storyboard */; };
 		3C8C541B1D4C57AB0028C099 /* TICodeChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */; };
+		3C8C54271D4C5DDF0028C099 /* TIBrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54261D4C5DDF0028C099 /* TIBrowserViewModel.swift */; };
+		3C8C542D1D4C606B0028C099 /* TINetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C542C1D4C606B0028C099 /* TINetworkService.swift */; };
+		3C8C542F1D4C62560028C099 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C542E1D4C62560028C099 /* Result.swift */; };
+		3C8C54311D4C638A0028C099 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54301D4C638A0028C099 /* HttpMethod.swift */; };
+		3C8C54331D4C66A90028C099 /* JsonDeserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */; };
+		3C8C54351D4C6B2D0028C099 /* TIBrowse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */; };
+		3C8C54371D4C8B600028C099 /* TILoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54361D4C8B600028C099 /* TILoadingViewController.swift */; };
 		412725695F6783CDA6CF3472 /* Pods_TICodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */; };
 		A6D8B4DC25B697BCA70F9D08 /* Pods_TICodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -31,7 +38,7 @@
 		39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		3C8C54021D4C57AB0028C099 /* TICodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TICodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIAppDelegate.swift; sourceTree = "<group>"; };
-		3C8C54071D4C57AB0028C099 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIBrowseViewController.swift; sourceTree = "<group>"; };
 		3C8C540A1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C8C540C1D4C57AB0028C099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C8C540F1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,6 +46,13 @@
 		3C8C54161D4C57AB0028C099 /* TICodeChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TICodeChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICodeChallengeTests.swift; sourceTree = "<group>"; };
 		3C8C541C1D4C57AB0028C099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C8C54261D4C5DDF0028C099 /* TIBrowserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowserViewModel.swift; sourceTree = "<group>"; };
+		3C8C542C1D4C606B0028C099 /* TINetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TINetworkService.swift; sourceTree = "<group>"; };
+		3C8C542E1D4C62560028C099 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		3C8C54301D4C638A0028C099 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDeserializable.swift; sourceTree = "<group>"; };
+		3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowse.swift; sourceTree = "<group>"; };
+		3C8C54361D4C8B600028C099 /* TILoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TILoadingViewController.swift; sourceTree = "<group>"; };
 		46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TICodeChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TICodeChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,8 +103,12 @@
 		3C8C54041D4C57AB0028C099 /* TICodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				3C8C54251D4C5B370028C099 /* Service */,
 				3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */,
-				3C8C54071D4C57AB0028C099 /* ViewController.swift */,
+				3C8C54361D4C8B600028C099 /* TILoadingViewController.swift */,
+				3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */,
+				3C8C54261D4C5DDF0028C099 /* TIBrowserViewModel.swift */,
+				3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */,
 				3C8C54091D4C57AB0028C099 /* Main.storyboard */,
 				3C8C540C1D4C57AB0028C099 /* Assets.xcassets */,
 				3C8C540E1D4C57AB0028C099 /* LaunchScreen.storyboard */,
@@ -106,6 +124,17 @@
 				3C8C541C1D4C57AB0028C099 /* Info.plist */,
 			);
 			path = TICodeChallengeTests;
+			sourceTree = "<group>";
+		};
+		3C8C54251D4C5B370028C099 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3C8C542C1D4C606B0028C099 /* TINetworkService.swift */,
+				3C8C542E1D4C62560028C099 /* Result.swift */,
+				3C8C54301D4C638A0028C099 /* HttpMethod.swift */,
+				3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		4DB3EAAA6B1331F4930900BD /* Frameworks */ = {
