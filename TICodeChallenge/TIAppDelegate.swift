@@ -23,6 +23,20 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 		let theme = TITheme.Default
 		TIThemeManager.applyTheme(theme)
 
+
+		// setting sharedURLCache to greater capacity (20MB in memory, 50MB in disk)
+		let memoryCapacity = 20 * 1024 * 1024 // 20MB
+		let diskCapacity = 50 * 1024 * 1024 // 50MB
+		let path =
+			NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
+
+		let cache = NSURLCache(
+			memoryCapacity: memoryCapacity,
+			diskCapacity: diskCapacity,
+			diskPath: path
+		)
+		NSURLCache.setSharedURLCache(cache)
+
 		return true
 	}
 

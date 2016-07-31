@@ -8,29 +8,35 @@
 
 import Foundation
 import SwiftyJSON
+import UIKit
 
 enum TINetworkError: ErrorType {
 	case networkError(error: NSError)
 	case serverError(code: Int)
 	case noResponse
+	case invalidDownloadLocation
 	case failedObjectMapping
 	case invalidURL
 	case invalidBody
 	case invalidResponse
+	case invalidData
 
 	static let TINetworkErrorDomain = "com.SQuareElan.TINetworkService"
 }
 
-struct TINetworkService {
+final class TINetworkService {
 
 	func simpleTIGetRequest<T: JsonDeserializable>(
-		with url: String,
+		with urlString: String,
 		callback: (Result<T>) -> Void
 	) -> NSURLSessionDataTask? {
 
+		// decoding and reEncoding due to data inconsistency
+		// (URL fields in outline is sometimes encoded and sometimes not)
+		let decoded = urlString.urlDecoded
 
 		// URL check
-		guard let components = NSURLComponents(string: url) else {
+		guard let components = NSURLComponents(string: decoded.urlEncoded) else {
 			callback(.failure(TINetworkError.invalidURL))
 			return nil
 		}
@@ -53,7 +59,6 @@ struct TINetworkService {
 			)]
 		}
 
-
 		// final check with url (should never caught here)
 		guard let url = components.URL else {
 			callback(.failure(TINetworkError.invalidURL))
@@ -64,8 +69,53 @@ struct TINetworkService {
 			with: url,
 			method: HTTPMethod.GET,
 			body: nil,
-			headers: nil, callback: callback
+			headers: nil,
+			callback: callback
 		)
+	}
+
+	func imageDownloadRequest(
+		with urlString: String,
+		callback: (Result<UIImage>) -> Void
+	) -> NSURLSessionDataTask? {
+
+		// decoding and reEncoding due to data inconsistency
+		// (URL fields in outline is sometimes encoded and sometimes not)
+		let decoded = urlString.urlDecoded
+
+		guard let url = NSURL(string: decoded.urlEncoded) else {
+			callback(.failure(TINetworkError.invalidURL))
+			return nil
+		}
+
+		// create NSURLMutableRequest
+		let urlRequest = NSMutableURLRequest(URL: url)
+		urlRequest.HTTPMethod = HTTPMethod.GET.description
+
+		// for image with is static, use more aggressive cache policy
+		urlRequest.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
+
+		let session = NSURLSession.sharedSession()
+		let dataTask = session.dataTaskWithRequest(urlRequest) {
+			[weak self] (data, response, error) in
+
+			self?.validate(with: response, error: error, callback: callback)
+
+			guard let data = data, let image = UIImage(data: data) else {
+				dispatch_async(dispatch_get_main_queue(), {
+					callback(.failure(TINetworkError.invalidData))
+				})
+				return
+			}
+
+			dispatch_async(dispatch_get_main_queue(), {
+				callback(.success(image))
+			})
+		}
+
+		dataTask.resume()
+
+		return dataTask
 	}
 
 	func request<T: JsonDeserializable>(
@@ -113,28 +163,14 @@ struct TINetworkService {
 
 		// create dataTask
 		let session = NSURLSession.sharedSession()
-		let dataTask = session.dataTaskWithRequest(urlRequest) { (data, response, err) in
+		let dataTask = session.dataTaskWithRequest(urlRequest) {
+			[weak self] (data, response, error) in
 
-			// validate for Error
-			if let err = err {
-				dispatch_async(dispatch_get_main_queue(), {
-					callback(.failure(TINetworkError.networkError(error: err)))
-				})
-				return
-			}
+			self?.validate(with: response, error: error, callback: callback)
 
-			// validate for data and response
-			guard let data = data, let response = response as? NSHTTPURLResponse else {
+			guard let data = data else {
 				dispatch_async(dispatch_get_main_queue(), {
-					callback(.failure(TINetworkError.noResponse))
-				})
-				return
-			}
-
-			// validate for response's status code
-			guard response.statusCode >= 200 && response.statusCode < 300 else {
-				dispatch_async(dispatch_get_main_queue(), {
-					callback(.failure(TINetworkError.serverError(code: response.statusCode)))
+					callback(.failure(TINetworkError.invalidData))
 				})
 				return
 			}
@@ -172,4 +208,38 @@ struct TINetworkService {
 		
 		return dataTask
 	}
+
+	private func validate<T>(
+		with response: NSURLResponse?,
+		error: NSError?,
+		callback: (Result<T>) -> Void
+	) {
+
+		// validate for Error
+		if let error = error {
+			dispatch_async(dispatch_get_main_queue(), {
+				callback(.failure(TINetworkError.networkError(error: error)))
+			})
+			return
+		}
+
+		// validate for data and response
+		guard let response = response as? NSHTTPURLResponse else {
+			dispatch_async(dispatch_get_main_queue(), {
+				callback(.failure(TINetworkError.noResponse))
+			})
+			return
+		}
+
+		// validate for response's status code
+		guard response.statusCode >= 200 && response.statusCode < 300 else {
+			dispatch_async(dispatch_get_main_queue(), {
+				callback(.failure(TINetworkError.serverError(code: response.statusCode)))
+			})
+			return
+		}
+	}
 }
+
+
+

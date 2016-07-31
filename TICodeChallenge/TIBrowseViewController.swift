@@ -28,6 +28,9 @@ final class TIBrowseViewController: UIViewController {
 		super.viewDidLoad()
 		navigationController?.setNavigationBarHidden(false, animated: false)
 		title = viewModel.title
+
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 40
 	}
 
 	// MARK: - Network Request
@@ -68,7 +71,8 @@ final class TIBrowseViewController: UIViewController {
 	}
 
 	func loadAudio(with path: String) {
-		guard let url = NSURL(string: path) else {
+
+		guard let url = NSURL(string: path.urlDecoded.urlEncoded) else {
 			// TODO: alert view
 			print("can't play music. wrong url")
 			return
@@ -124,14 +128,45 @@ extension TIBrowseViewController: UITableViewDataSource {
 		cellForRowAtIndexPath indexPath: NSIndexPath
 	) -> UITableViewCell {
 
-		// TODO: static constant for identifier
+		let section = indexPath.section
+		let row = indexPath.row
+		let outline = viewModel.outline(for: section, row: row)
+
 		let cell: TIBrowseTableViewCell = tableView.dequeueResuableCell(forIndexPath: indexPath)
 
-		let title = viewModel.outline(
-			for: indexPath.section,
-			row: indexPath.row).text
+		let title = outline.text
+		cell.titleLabel!.text = title
 
-		cell.textLabel!.text = title
+		if let subtitle = outline.subtext {
+			cell.subTitleLabel.text = subtitle
+			cell.subTitleLabel.hidden = false
+		} else {
+			cell.subTitleLabel.hidden = true
+		}
+
+		if let imageURL = outline.image {
+			cell.thumbNailImageView.hidden = false
+
+			// tagging to determine if the cell is reused and image is not valid anymore
+			// Due to sections, this might not be a perfect solution. However, probably good enough
+			let tag = row * (section+1)
+			cell.thumbNailImageView.tag = tag
+
+			// fetch image from URL.
+			networkService.imageDownloadRequest(with: imageURL) { result in
+				switch result {
+				case .success(let image):
+					if cell.thumbNailImageView.tag == tag {
+						cell.thumbNailImageView.image = image
+					}
+				case .failure(let error):
+					// TODO: refactor and automatically retry
+					print(error)
+				}
+			}
+		} else {
+			cell.thumbNailImageView.hidden = true
+		}
 
 		return cell
 	}

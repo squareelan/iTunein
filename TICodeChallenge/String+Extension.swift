@@ -12,4 +12,13 @@ extension String {
 	var localizedString: String {
 		return NSLocalizedString(self, comment: "")
 	}
+
+	var urlEncoded: String {
+		return self.stringByAddingPercentEncodingWithAllowedCharacters(
+			NSCharacterSet.URLQueryAllowedCharacterSet()) ?? ""
+	}
+
+	var urlDecoded: String {
+		return self.stringByRemovingPercentEncoding ?? ""
+	}
 }

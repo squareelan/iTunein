@@ -114,9 +114,16 @@
 			isa = PBXGroup;
 			children = (
 				3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */,
-				3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		3C7B27F31D4DA98C001D03DD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		3C8C53F91D4C57AB0028C099 = {
@@ -147,6 +154,7 @@
 				3C7B27EB1D4D6CF7001D03DD /* Model */,
 				3C7B27EC1D4D6CFE001D03DD /* ViewModel */,
 				3C8C543A1D4CE2950028C099 /* ViewController */,
+				3C7B27F31D4DA98C001D03DD /* Cell */,
 				3C8C54461D4CEC6F0028C099 /* Storyboard */,
 				3C8C544C1D4CED8E0028C099 /* Theme */,
 				3C8C54451D4CEC5C0028C099 /* Extension */,

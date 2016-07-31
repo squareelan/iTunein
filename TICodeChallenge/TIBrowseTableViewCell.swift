@@ -10,6 +10,10 @@ import UIKit
 
 class TIBrowseTableViewCell: UITableViewCell {
 
+	@IBOutlet var thumbNailImageView: UIImageView!
+	@IBOutlet var titleLabel: UILabel!
+	@IBOutlet var subTitleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,7 @@ class TIBrowseTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+	override func prepareForReuse() {
+		thumbNailImageView.image = UIImage(named: "placeHolderImage")
+	}
 }
