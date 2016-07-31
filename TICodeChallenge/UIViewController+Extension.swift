@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol Identifiable {
-	static var identifier: String { get }
-}
-
-extension UIViewController: Identifiable {
-	static var identifier: String {
-		return String(self)
-	}
-}
-
 extension UIViewController {
 
 	func startNetworkActivityIndicator(

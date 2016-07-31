@@ -30,6 +30,19 @@ struct TIBrowse: JsonDeserializable {
 		}
 		outlines = tempOutlines
 	}
+
+	func anyOutlineContainsChildren() -> Bool {
+
+		// checking if there is another level of depth
+		var bool = false
+		for outline in outlines {
+			if outline.children != nil {
+				bool = true
+				break
+			}
+		}
+		return bool
+	}
 }
 
 struct TIOutline: JsonDeserializable {

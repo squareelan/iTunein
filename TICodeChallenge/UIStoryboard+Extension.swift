@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Storyboard: CustomStringConvertible {
+enum StoryboardName: CustomStringConvertible {
 
 	struct Constants {
 		static let mainStoryboardName = "Main"
@@ -26,14 +26,14 @@ enum Storyboard: CustomStringConvertible {
 extension UIStoryboard {
 
 	class func mainStoryboard() -> UIStoryboard {
-		return UIStoryboard(name: Storyboard.main.description, bundle: nil)
+		return UIStoryboard(name: StoryboardName.main.description, bundle: nil)
 	}
 
-	func instantiateViewController<T: UIViewController>() -> T? {
+	func instantiateViewController<T: UIViewController>() -> T {
 
 		guard let vc = instantiateViewControllerWithIdentifier(T.identifier) as? T else {
-			// return nil for not matching ViewController
-			return nil
+			// This error is non recoverable.
+			fatalError("Cannot find TableViewCell for the identifier")
 		}
 		return vc
 	}

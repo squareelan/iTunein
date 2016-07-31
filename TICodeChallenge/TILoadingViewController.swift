@@ -40,14 +40,11 @@ final class TILoadingViewController: UIViewController {
 
 			case .success(let value):
 
-				let storyboard = UIStoryboard.mainStoryboard()
-				guard let vc: TIBrowseViewController = storyboard.instantiateViewController() else {
-					return
-				}
+				let vc: TIBrowseViewController =
+					UIStoryboard.mainStoryboard().instantiateViewController()
 				
-
-				vc.browseItem = value
-				vc.temporaryTitle = value.title
+				let newViewModel = TIBrowseViewModel(browseItem: value, title: value.title)
+				vc.viewModel = newViewModel
 				self.navigationController?.setViewControllers([vc], animated: false)
 				
 			case .failure(let error): print(error)
