@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TICodeChallenge.xcscheme</key>
+		<key>Pods-TuneOut.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TICodeChallengeTests.xcscheme</key>
+		<key>Pods-TuneOutTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A314D3F624DD7D92D9F64EEA0EB3C0B</key>
+		<key>1E802630A5082450EC8DE984DF10265F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98607F1C6C275E616A8C61E8515C64B9</key>
+		<key>42CB23815B7CBE7070F18D87E0AB4B87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C2DECD22F79ED8D0E814032CBE2CFAA</key>
+		<key>589F1A3986F10D3D567E2BC11EFE0B57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F12F2FA4602E2607BC046EFF2C79A0BC</key>
+		<key>B38006E2F7EFA7CC7A12100E3AA151DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

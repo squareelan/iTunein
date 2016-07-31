@@ -31,7 +31,7 @@
 		3C8C544B1D4CED890028C099 /* TIThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544A1D4CED890028C099 /* TIThemeManager.swift */; };
 		3C8C544E1D4CEEAE0028C099 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544D1D4CEEAE0028C099 /* Theme.swift */; };
 		3C8C54501D4D1A610028C099 /* TIBrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */; };
-		412725695F6783CDA6CF3472 /* Pods_TICodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */; };
+		49F643F04885952E933ECD95 /* Pods_TuneOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C804AFE2D7B1A3A8F3A1281A /* Pods_TuneOut.framework */; };
 		A6D8B4DC25B697BCA70F9D08 /* Pods_TICodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,20 +46,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		03B3BCDE6D7714ADF4F845A2 /* Pods-TuneOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests.release.xcconfig"; sourceTree = "<group>"; };
+		3317C046E3F8AD7CA4DDD5C8 /* Pods-TuneOut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut.debug.xcconfig"; sourceTree = "<group>"; };
 		3C7B27E71D4D6CE7001D03DD /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27ED1D4DA19C001D03DD /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27EF1D4DA211001D03DD /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseTableViewCell.swift; sourceTree = "<group>"; };
-		3C8C54021D4C57AB0028C099 /* TICodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TICodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C8C54021D4C57AB0028C099 /* TuneOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuneOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIAppDelegate.swift; sourceTree = "<group>"; };
 		3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIBrowseViewController.swift; sourceTree = "<group>"; };
 		3C8C540A1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C8C540C1D4C57AB0028C099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C8C540F1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C8C54111D4C57AB0028C099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C8C54161D4C57AB0028C099 /* TICodeChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TICodeChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C8C54161D4C57AB0028C099 /* TuneOut.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TuneOut.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICodeChallengeTests.swift; sourceTree = "<group>"; };
 		3C8C541C1D4C57AB0028C099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C8C542C1D4C606B0028C099 /* TINetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TINetworkService.swift; sourceTree = "<group>"; };
@@ -76,10 +77,9 @@
 		3C8C544D1D4CEEAE0028C099 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseViewModel.swift; sourceTree = "<group>"; };
 		46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TICodeChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TICodeChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
-		D0138C36B3F0BB6EE5499234 /* Pods-TICodeChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
-		DDC1374D1A22653C07EE788A /* Pods-TICodeChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TICodeChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		55E1EC62A3F956C76ADBFFFD /* Pods-TuneOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests.debug.xcconfig"; sourceTree = "<group>"; };
+		77B434331299FFBE4DF83E6B /* Pods-TuneOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOut.release.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut.release.xcconfig"; sourceTree = "<group>"; };
+		C804AFE2D7B1A3A8F3A1281A /* Pods_TuneOut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TuneOut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6D8B4DC25B697BCA70F9D08 /* Pods_TICodeChallenge.framework in Frameworks */,
+				49F643F04885952E933ECD95 /* Pods_TuneOut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				412725695F6783CDA6CF3472 /* Pods_TICodeChallengeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +140,8 @@
 		3C8C54031D4C57AB0028C099 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C8C54021D4C57AB0028C099 /* TICodeChallenge.app */,
-				3C8C54161D4C57AB0028C099 /* TICodeChallengeTests.xctest */,
+				3C8C54021D4C57AB0028C099 /* TuneOut.app */,
+				3C8C54161D4C57AB0028C099 /* TuneOut.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				46C45185B11346573600F0A0 /* Pods_TICodeChallenge.framework */,
-				7708183C361855F8CA5D9FD4 /* Pods_TICodeChallengeTests.framework */,
+				C804AFE2D7B1A3A8F3A1281A /* Pods_TuneOut.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,10 +246,10 @@
 		8B2538F21A97470FC30A9125 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */,
-				39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */,
-				DDC1374D1A22653C07EE788A /* Pods-TICodeChallengeTests.debug.xcconfig */,
-				D0138C36B3F0BB6EE5499234 /* Pods-TICodeChallengeTests.release.xcconfig */,
+				3317C046E3F8AD7CA4DDD5C8 /* Pods-TuneOut.debug.xcconfig */,
+				77B434331299FFBE4DF83E6B /* Pods-TuneOut.release.xcconfig */,
+				55E1EC62A3F956C76ADBFFFD /* Pods-TuneOutTests.debug.xcconfig */,
+				03B3BCDE6D7714ADF4F845A2 /* Pods-TuneOutTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -257,9 +257,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3C8C54011D4C57AB0028C099 /* TICodeChallenge */ = {
+		3C8C54011D4C57AB0028C099 /* TuneOut */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C8C541F1D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallenge" */;
+			buildConfigurationList = 3C8C541F1D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TuneOut" */;
 			buildPhases = (
 				798B18C50BEAC61B8514DC70 /* [CP] Check Pods Manifest.lock */,
 				3C8C53FE1D4C57AB0028C099 /* Sources */,
@@ -272,14 +272,14 @@
 			);
 			dependencies = (
 			);
-			name = TICodeChallenge;
+			name = TuneOut;
 			productName = TICodeChallenge;
-			productReference = 3C8C54021D4C57AB0028C099 /* TICodeChallenge.app */;
+			productReference = 3C8C54021D4C57AB0028C099 /* TuneOut.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3C8C54151D4C57AB0028C099 /* TICodeChallengeTests */ = {
+		3C8C54151D4C57AB0028C099 /* TuneOutTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3C8C54221D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallengeTests" */;
+			buildConfigurationList = 3C8C54221D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TuneOutTests" */;
 			buildPhases = (
 				C2AE7590F345559FD0ADA222 /* [CP] Check Pods Manifest.lock */,
 				3C8C54121D4C57AB0028C099 /* Sources */,
@@ -293,9 +293,9 @@
 			dependencies = (
 				3C8C54181D4C57AB0028C099 /* PBXTargetDependency */,
 			);
-			name = TICodeChallengeTests;
+			name = TuneOutTests;
 			productName = TICodeChallengeTests;
-			productReference = 3C8C54161D4C57AB0028C099 /* TICodeChallengeTests.xctest */;
+			productReference = 3C8C54161D4C57AB0028C099 /* TuneOut.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -323,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3C8C53FD1D4C57AB0028C099 /* Build configuration list for PBXProject "TICodeChallenge" */;
+			buildConfigurationList = 3C8C53FD1D4C57AB0028C099 /* Build configuration list for PBXProject "TuneOut" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -336,8 +336,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3C8C54011D4C57AB0028C099 /* TICodeChallenge */,
-				3C8C54151D4C57AB0028C099 /* TICodeChallengeTests */,
+				3C8C54011D4C57AB0028C099 /* TuneOut */,
+				3C8C54151D4C57AB0028C099 /* TuneOutTests */,
 			);
 		};
 /* End PBXProject section */
@@ -376,7 +376,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		67615ED9FAD7A620B90DC10E /* [CP] Embed Pods Frameworks */ = {
@@ -391,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallenge/Pods-TICodeChallenge-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		798B18C50BEAC61B8514DC70 /* [CP] Check Pods Manifest.lock */ = {
@@ -436,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E87431E11A8A1C304E8DA3D7 /* [CP] Embed Pods Frameworks */ = {
@@ -451,7 +451,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TICodeChallengeTests/Pods-TICodeChallengeTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -496,7 +496,7 @@
 /* Begin PBXTargetDependency section */
 		3C8C54181D4C57AB0028C099 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3C8C54011D4C57AB0028C099 /* TICodeChallenge */;
+			target = 3C8C54011D4C57AB0028C099 /* TuneOut */;
 			targetProxy = 3C8C54171D4C57AB0028C099 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -606,7 +606,7 @@
 		};
 		3C8C54201D4C57AB0028C099 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88772DDDB33C8894BB6D9E83 /* Pods-TICodeChallenge.debug.xcconfig */;
+			baseConfigurationReference = 3317C046E3F8AD7CA4DDD5C8 /* Pods-TuneOut.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -614,14 +614,14 @@
 				INFOPLIST_FILE = TICodeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SQuareElan.TICodeChallenge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TuneOut;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		3C8C54211D4C57AB0028C099 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39F0633FAD34D31F61B01B32 /* Pods-TICodeChallenge.release.xcconfig */;
+			baseConfigurationReference = 77B434331299FFBE4DF83E6B /* Pods-TuneOut.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -629,7 +629,7 @@
 				INFOPLIST_FILE = TICodeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SQuareElan.TICodeChallenge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TuneOut;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
@@ -637,34 +637,34 @@
 		};
 		3C8C54231D4C57AB0028C099 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDC1374D1A22653C07EE788A /* Pods-TICodeChallengeTests.debug.xcconfig */;
+			baseConfigurationReference = 55E1EC62A3F956C76ADBFFFD /* Pods-TuneOutTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TICodeChallengeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SQuareElan.TICodeChallengeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TICodeChallenge.app/TICodeChallenge";
+				PRODUCT_NAME = TuneOut;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TuneOut.app/TuneOut";
 			};
 			name = Debug;
 		};
 		3C8C54241D4C57AB0028C099 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0138C36B3F0BB6EE5499234 /* Pods-TICodeChallengeTests.release.xcconfig */;
+			baseConfigurationReference = 03B3BCDE6D7714ADF4F845A2 /* Pods-TuneOutTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TICodeChallengeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SQuareElan.TICodeChallengeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TICodeChallenge.app/TICodeChallenge";
+				PRODUCT_NAME = TuneOut;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TuneOut.app/TuneOut";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3C8C53FD1D4C57AB0028C099 /* Build configuration list for PBXProject "TICodeChallenge" */ = {
+		3C8C53FD1D4C57AB0028C099 /* Build configuration list for PBXProject "TuneOut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C8C541D1D4C57AB0028C099 /* Debug */,
@@ -673,7 +673,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C8C541F1D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallenge" */ = {
+		3C8C541F1D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TuneOut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C8C54201D4C57AB0028C099 /* Debug */,
@@ -682,7 +682,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3C8C54221D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TICodeChallengeTests" */ = {
+		3C8C54221D4C57AB0028C099 /* Build configuration list for PBXNativeTarget "TuneOutTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3C8C54231D4C57AB0028C099 /* Debug */,

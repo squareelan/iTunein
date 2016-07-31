@@ -1,13 +1,13 @@
 platform :ios, '9.0'
 
-target 'TICodeChallenge' do
+target 'TuneOut' do
 
   use_frameworks!
 
   pod 'RxSwift'
   pod 'SwiftyJSON'
 
-  target 'TICodeChallengeTests' do
+  target 'TuneOutTests' do
     inherit! :search_paths
     # Pods for testing
   end

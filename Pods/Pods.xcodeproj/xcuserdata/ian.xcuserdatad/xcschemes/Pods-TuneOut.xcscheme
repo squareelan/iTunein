@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F12F2FA4602E2607BC046EFF2C79A0BC"
-               BuildableName = "Pods_TICodeChallenge.framework"
-               BlueprintName = "Pods-TICodeChallenge"
+               BlueprintIdentifier = "589F1A3986F10D3D567E2BC11EFE0B57"
+               BuildableName = "Pods_TuneOut.framework"
+               BlueprintName = "Pods-TuneOut"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F12F2FA4602E2607BC046EFF2C79A0BC"
-            BuildableName = "Pods_TICodeChallenge.framework"
-            BlueprintName = "Pods-TICodeChallenge"
+            BlueprintIdentifier = "589F1A3986F10D3D567E2BC11EFE0B57"
+            BuildableName = "Pods_TuneOut.framework"
+            BlueprintName = "Pods-TuneOut"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
