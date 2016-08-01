@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RxCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42CB23815B7CBE7070F18D87E0AB4B87</key>
+		<key>54A5565068734DA71ED0071661DC7F5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>589F1A3986F10D3D567E2BC11EFE0B57</key>
+		<key>643DCFC3254378AB69783EB047071CE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B38006E2F7EFA7CC7A12100E3AA151DF</key>
+		<key>ABBE00F405576487DE6585528F52220A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3132D94DF094150992E7BE957BAE08C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

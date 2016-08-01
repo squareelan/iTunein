@@ -45,6 +45,14 @@ struct TIBrowse: JsonDeserializable {
 	}
 }
 
+
+enum TIOutlineType: String {
+	case link
+	case audio
+	case undefined
+}
+
+
 struct TIOutline: JsonDeserializable {
 
 	let presetId: String?
@@ -108,10 +116,4 @@ struct TIOutline: JsonDeserializable {
 			children = nil
 		}
 	}
-}
-
-enum TIOutlineType: String {
-	case link
-	case audio
-	case undefined
 }

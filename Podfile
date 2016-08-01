@@ -5,6 +5,7 @@ target 'TuneOut' do
   use_frameworks!
 
   pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'SwiftyJSON'
 
   target 'TuneOutTests' do

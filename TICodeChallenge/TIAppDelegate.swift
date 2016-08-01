@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class TIAppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +37,9 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 			diskPath: path
 		)
 		NSURLCache.setSharedURLCache(cache)
+
+		// enable background audio playback.
+		try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
 
 		return true
 	}

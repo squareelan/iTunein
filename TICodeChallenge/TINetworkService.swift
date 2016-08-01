@@ -11,15 +11,17 @@ import SwiftyJSON
 import UIKit
 
 enum TINetworkError: ErrorType {
+
+	// possibly recoverable
 	case networkError(error: NSError)
-	case serverError(code: Int)
+	case serverError(code: Int)			// anything greater than >= 500  will be recoverable
+	case invalidData
 	case noResponse
-	case invalidDownloadLocation
+
+	// non recoverable errors
 	case failedObjectMapping
 	case invalidURL
 	case invalidBody
-	case invalidResponse
-	case invalidData
 
 	static let TINetworkErrorDomain = "com.SQuareElan.TINetworkService"
 }
