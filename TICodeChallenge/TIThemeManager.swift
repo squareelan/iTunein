@@ -18,7 +18,7 @@ struct TIThemeManager {
 			NSForegroundColorAttributeName:theme.textColor
 		]
 
-		UITabBar.appearance().barTintColor = theme.backgroundColor
-		UITabBar.appearance().tintColor = theme.textColor
+//		UITabBar.appearance().barTintColor = theme.backgroundColor
+		UITabBar.appearance().tintColor = theme.backgroundColor
 	}
 }

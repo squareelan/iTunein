@@ -14,6 +14,7 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var networkService = TINetworkService()
+	var audioManager = TIAudioPlaybackManager(playList: TIPlayList(playItems: []))
 
 	func application(
 		application: UIApplication,
@@ -23,7 +24,6 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 		// apply theme
 		let theme = TITheme.Default
 		TIThemeManager.applyTheme(theme)
-
 
 		// setting sharedURLCache to greater capacity (20MB in memory, 50MB in disk)
 		let memoryCapacity = 20 * 1024 * 1024 // 20MB

@@ -25,7 +25,7 @@ final class TIBrowseViewModel {
 	var title: Variable<String?>
 	var activityCount = Variable<Int>(0)
 	var newBrowseItem = Variable<TIBrowse?>(nil)
-	var newAudioURL = Variable<NSURL?>(nil)
+	var newAudioItems = Variable<TIPlayList?>(nil)
 	var errorEvent = Variable<ErrorType?>(nil)
 
 
@@ -86,10 +86,10 @@ final class TIBrowseViewModel {
 
 		switch item.type {
 		case .link:
-			loadLink(networkService, path: path, title: item.text)
+			loadLink(with: networkService, path: path, title: item.text)
 
 		case .audio:
-			loadAudio(with: path)
+			loadAudio(with: networkService, path: path)
 
 		case .undefined:
 			self.errorEvent.value = BrowseViewError.undefinedType
@@ -98,7 +98,7 @@ final class TIBrowseViewModel {
 	}
 
 	func loadLink(
-		service: TINetworkService,
+		with service: TINetworkService,
 		path: String,
 		title temporaryTitle: String?
 		) {
@@ -121,14 +121,31 @@ final class TIBrowseViewModel {
 		}
 	}
 
-	func loadAudio(with path: String) {
+	func loadAudio(with service: TINetworkService, path: String) {
 
-		guard let url = NSURL(string: path.urlDecoded.urlEncoded) else {
-			self.errorEvent.value = BrowseViewError.inavlidAudioUrl
-			return
+		self.activityCount.value += 1
+
+		service.simpleTIGetRequest(
+			with: path
+		) { (result: Result<TIPlayList>) in
+
+			self.activityCount.value -= 1
+
+			switch result {
+			case .success(let value):
+				self.newAudioItems.value = value
+
+			case .failure(let error): print(error)
+			self.errorEvent.value = error
+			}
 		}
-
-		newAudioURL.value = url
 	}
 
+	func loadImage(with urlString: String, completion: Result<UIImage> -> ()) {
+
+		// fetch image from URL.
+		networkService.imageDownloadRequest(with: urlString) { result in
+			completion(result)
+		}
+	}
 }

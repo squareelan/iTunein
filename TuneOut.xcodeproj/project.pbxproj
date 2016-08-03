@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C35F8B51D504393001EEA6E /* TIPlayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35F8B41D504393001EEA6E /* TIPlayItem.swift */; };
 		3C48EFC71D4E97DC00A250C2 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C48EFC61D4E97DC00A250C2 /* UIAlertController+Extension.swift */; };
 		3C48EFC91D4EAC4900A250C2 /* ReactiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C48EFC81D4EAC4900A250C2 /* ReactiveView.swift */; };
+		3C4EF3981D4FD8FC00FB651F /* TIBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EF3971D4FD8FC00FB651F /* TIBrowseViewController.swift */; };
+		3C4EF39A1D4FDB5F00FB651F /* TIAudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EF3991D4FDB5F00FB651F /* TIAudioPlayerViewController.swift */; };
+		3C4EF39C1D4FF84400FB651F /* TIPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EF39B1D4FF84400FB651F /* TIPlaylist.swift */; };
 		3C7B27E91D4D6CE7001D03DD /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27E71D4D6CE7001D03DD /* UIStoryboard+Extension.swift */; };
 		3C7B27EA1D4D6CE7001D03DD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */; };
 		3C7B27EE1D4DA19C001D03DD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27ED1D4DA19C001D03DD /* UITableView+Extension.swift */; };
 		3C7B27F01D4DA211001D03DD /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27EF1D4DA211001D03DD /* Identifiable.swift */; };
 		3C7B27F21D4DA65B001D03DD /* TIBrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */; };
 		3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */; };
-		3C8C54081D4C57AB0028C099 /* TIBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */; };
 		3C8C540B1D4C57AB0028C099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C54091D4C57AB0028C099 /* Main.storyboard */; };
 		3C8C540D1D4C57AB0028C099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540C1D4C57AB0028C099 /* Assets.xcassets */; };
 		3C8C54101D4C57AB0028C099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540E1D4C57AB0028C099 /* LaunchScreen.storyboard */; };
@@ -33,6 +36,7 @@
 		3C8C544B1D4CED890028C099 /* TIThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544A1D4CED890028C099 /* TIThemeManager.swift */; };
 		3C8C544E1D4CEEAE0028C099 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544D1D4CEEAE0028C099 /* Theme.swift */; };
 		3C8C54501D4D1A610028C099 /* TIBrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */; };
+		3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */; };
 		49F643F04885952E933ECD95 /* Pods_TuneOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C804AFE2D7B1A3A8F3A1281A /* Pods_TuneOut.framework */; };
 		7C6DAADDA84979EA5FF8167B /* Pods_TuneOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CDF714B062E04CCF60C7758 /* Pods_TuneOutTests.framework */; };
 /* End PBXBuildFile section */
@@ -51,8 +55,12 @@
 		03B3BCDE6D7714ADF4F845A2 /* Pods-TuneOutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests.release.xcconfig"; sourceTree = "<group>"; };
 		0CDF714B062E04CCF60C7758 /* Pods_TuneOutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TuneOutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3317C046E3F8AD7CA4DDD5C8 /* Pods-TuneOut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut.debug.xcconfig"; sourceTree = "<group>"; };
+		3C35F8B41D504393001EEA6E /* TIPlayItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIPlayItem.swift; sourceTree = "<group>"; };
 		3C48EFC61D4E97DC00A250C2 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		3C48EFC81D4EAC4900A250C2 /* ReactiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveView.swift; sourceTree = "<group>"; };
+		3C4EF3971D4FD8FC00FB651F /* TIBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseViewController.swift; sourceTree = "<group>"; };
+		3C4EF3991D4FDB5F00FB651F /* TIAudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIAudioPlayerViewController.swift; sourceTree = "<group>"; };
+		3C4EF39B1D4FF84400FB651F /* TIPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIPlaylist.swift; sourceTree = "<group>"; };
 		3C7B27E71D4D6CE7001D03DD /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27ED1D4DA19C001D03DD /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -60,7 +68,6 @@
 		3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseTableViewCell.swift; sourceTree = "<group>"; };
 		3C8C54021D4C57AB0028C099 /* TuneOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TuneOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIAppDelegate.swift; sourceTree = "<group>"; };
-		3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIBrowseViewController.swift; sourceTree = "<group>"; };
 		3C8C540A1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C8C540C1D4C57AB0028C099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C8C540F1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +88,7 @@
 		3C8C544A1D4CED890028C099 /* TIThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIThemeManager.swift; sourceTree = "<group>"; };
 		3C8C544D1D4CEEAE0028C099 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseViewModel.swift; sourceTree = "<group>"; };
+		3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIAudioPlaybackManager.swift; sourceTree = "<group>"; };
 		55E1EC62A3F956C76ADBFFFD /* Pods-TuneOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		77B434331299FFBE4DF83E6B /* Pods-TuneOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOut.release.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut.release.xcconfig"; sourceTree = "<group>"; };
 		C804AFE2D7B1A3A8F3A1281A /* Pods_TuneOut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TuneOut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,10 +114,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C4EF39D1D4FF84900FB651F /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				3C4EF39B1D4FF84400FB651F /* TIPlaylist.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 		3C7B27EB1D4D6CF7001D03DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3C4EF39D1D4FF84900FB651F /* Realm */,
 				3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */,
+				3C35F8B41D504393001EEA6E /* TIPlayItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -183,6 +201,7 @@
 				3C8C542E1D4C62560028C099 /* Result.swift */,
 				3C8C54301D4C638A0028C099 /* HttpMethod.swift */,
 				3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */,
+				3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -191,7 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				3C8C54361D4C8B600028C099 /* TILoadingViewController.swift */,
-				3C8C54071D4C57AB0028C099 /* TIBrowseViewController.swift */,
+				3C4EF3971D4FD8FC00FB651F /* TIBrowseViewController.swift */,
+				3C4EF3991D4FDB5F00FB651F /* TIAudioPlayerViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -471,20 +491,24 @@
 				3C8C54371D4C8B600028C099 /* TILoadingViewController.swift in Sources */,
 				3C8C542F1D4C62560028C099 /* Result.swift in Sources */,
 				3C8C544B1D4CED890028C099 /* TIThemeManager.swift in Sources */,
-				3C8C54081D4C57AB0028C099 /* TIBrowseViewController.swift in Sources */,
 				3C7B27EE1D4DA19C001D03DD /* UITableView+Extension.swift in Sources */,
 				3C8C54401D4CEB240028C099 /* UIColor+Extension.swift in Sources */,
+				3C35F8B51D504393001EEA6E /* TIPlayItem.swift in Sources */,
 				3C8C54421D4CEB490028C099 /* String+Extension.swift in Sources */,
 				3C8C54311D4C638A0028C099 /* HttpMethod.swift in Sources */,
 				3C8C544E1D4CEEAE0028C099 /* Theme.swift in Sources */,
 				3C7B27F21D4DA65B001D03DD /* TIBrowseTableViewCell.swift in Sources */,
 				3C8C54331D4C66A90028C099 /* JsonDeserializable.swift in Sources */,
+				3C4EF39A1D4FDB5F00FB651F /* TIAudioPlayerViewController.swift in Sources */,
+				3C4EF39C1D4FF84400FB651F /* TIPlaylist.swift in Sources */,
 				3C48EFC91D4EAC4900A250C2 /* ReactiveView.swift in Sources */,
 				3C8C54501D4D1A610028C099 /* TIBrowseViewModel.swift in Sources */,
+				3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */,
 				3C48EFC71D4E97DC00A250C2 /* UIAlertController+Extension.swift in Sources */,
 				3C8C542D1D4C606B0028C099 /* TINetworkService.swift in Sources */,
 				3C7B27F01D4DA211001D03DD /* Identifiable.swift in Sources */,
 				3C8C54351D4C6B2D0028C099 /* TIBrowse.swift in Sources */,
+				3C4EF3981D4FD8FC00FB651F /* TIBrowseViewController.swift in Sources */,
 				3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */,
 				3C8C54491D4CED7E0028C099 /* TITheme.swift in Sources */,
 				3C7B27E91D4D6CE7001D03DD /* UIStoryboard+Extension.swift in Sources */,

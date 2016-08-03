@@ -8,17 +8,15 @@
 
 import UIKit
 import RxSwift
-import AVKit
 import AVFoundation
 
 // This class is created for generic table view for displaying
 // TuneIn's opml outline items. However, it only provide 2 level depth.
 // (Top level will be presented as section and bottom will be row)
-final class TIBrowseViewController: UIViewController, ReactiveView {
+final class TIBrowseViewController: UIViewController {
 
 	@IBOutlet private var tableView: UITableView!
 	private let disposeBag = DisposeBag()
-	private var player: AVPlayer!
 
 	var viewModel: TIBrowseViewModel! // viewModel should always exist after viewDidLoad
 
@@ -26,99 +24,36 @@ final class TIBrowseViewController: UIViewController, ReactiveView {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		navigationController?.setNavigationBarHidden(false, animated: false)
 
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 40
 
 		setUpRx()
-
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TIBrowseViewController.setUpRx), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
 	}
 
-	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-		if player.status == AVPlayerStatus.Failed {
-			print("failed")
-		} else if player.status == AVPlayerStatus.ReadyToPlay {
-			self.player.play()
-		} else if player.status == AVPlayerStatus.Unknown {
-			print("unknown")
-		}
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationController?.setNavigationBarHidden(false, animated: false)
+		
 	}
 
-	func setUpRx() {
 
-		// update view title
-		viewModel.title.asObservable().debug("Title")
-			.subscribeNext { [weak self] text in self?.title = text }
-			.addDisposableTo(disposeBag)
-
-		// show/hide activity indicator
-		viewModel.activityCount.asObservable().debug("Activity Count")
-			.subscribeNext { [weak self] count in
-
-			if (count > 0) {
-				self?.startNetworkActivityIndicator(isInteractionEnabled: false)
-			}
-			else {
-				self?.stoptNetworkActivityIndicator()
-			}
-		}.addDisposableTo(disposeBag)
-
-		// if new browse item is fetched, show new view for the item.
-		viewModel.newBrowseItem.asObservable()
-			.filter { $0 != nil }.debug("New Browse Item")
-			.subscribeNext { [weak self] browseItem in
-
-			// Covering the case where title is missed out for some outline.
-			let title = browseItem!.title ?? self?.viewModel.chosenItem?.text
-			self?.showNewBrowseView(with: browseItem!, title: title)
-		}.addDisposableTo(disposeBag)
-
-		// if new audio url is assigned, play new audio
-		viewModel.newAudioURL.asObservable()
-			.filter { $0 != nil }.debug("New Audio")
-			.subscribeNext { [weak self] audioURL in
-
-			let asset = AVAsset(URL: audioURL!)
-			let avItem = AVPlayerItem(asset: asset)
-			self?.player = AVPlayer(playerItem: avItem)
-
-			self?.player.addObserver(self!, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: nil)
-
-//			self?.performSegueWithIdentifier("streamingSegue", sender: audioURL)
-		}.addDisposableTo(disposeBag)
-
-		// Hook up for any error
-		viewModel.errorEvent.asObservable()
-			.filter { $0 != nil }.debug("Error Event")
-			.subscribeNext { [weak self] error in
-
-			// probably better to handle recoverable and non-recoverable error differently
-			// providing retry option for recoverable error would
-			let title = "Network Error"
-			let message = "Sorry, we are having an issue. Please try again later."
-			let alert = UIAlertController.create(with: title, message: message)
-			self?.presentViewController(alert, animated: true, completion: nil)
-		}.addDisposableTo(disposeBag)
-	}
-
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "streamingSegue" {
-			guard let url = sender as? NSURL else {
-				print("can't play music. wrong or missing url")
-				return
-			}
-
-			guard let destination =
-				segue.destinationViewController as? AVPlayerViewController else {
-					print("can't open streaming player. Wrong player is assigned")
-					return
-			}
-
-			destination.player = AVPlayer(URL: url)
-		}
-	}
+//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//		if segue.identifier == SegueIdentifier.showAudioPlayer {
+//			guard let url = sender as? NSURL else {
+//				let message = "Sorry, this item is not playable.".localizedString
+//				let alert = UIAlertController.create(with: nil, message: message)
+//				self.presentViewController(alert, animated: true, completion: nil)
+//				return
+//			}
+//
+//			guard let destination =
+//				segue.destinationViewController as? AVPlayerViewController else {
+//					fatalError("Wrong destination ViewController...")
+//			}
+//		}
+//	}
 
 	func showNewBrowseView(with browseItem: TIBrowse, title: String?) {
 		let vc: TIBrowseViewController =
@@ -130,6 +65,77 @@ final class TIBrowseViewController: UIViewController, ReactiveView {
 		)
 		vc.viewModel = newVM
 		self.navigationController?.pushViewController(vc, animated: true)
+	}
+}
+
+extension TIBrowseViewController: ReactiveView {
+	
+	func setUpRx() {
+
+		// update view title
+		viewModel
+			.title
+			.asObservable()
+			.debug("Title")
+			.subscribeNext { [weak self] text in self?.title = text }
+			.addDisposableTo(disposeBag)
+
+		// show/hide activity indicator
+		viewModel
+			.activityCount
+			.asObservable()
+			.debug("Activity Count")
+			.subscribeNext { [weak self] count in
+				if (count > 0) {
+					self?.startNetworkActivityIndicator(isInteractionEnabled: false)
+				}
+				else {
+					self?.stoptNetworkActivityIndicator()
+				}
+			}.addDisposableTo(disposeBag)
+
+		// if new browse item is fetched, show new view for the item.
+		viewModel
+			.newBrowseItem
+			.asObservable()
+			.filter { $0 != nil }
+			.debug("New Browse Item")
+			.subscribeNext { [weak self] browseItem in
+
+				// Covering the case where title is missed out for some outline.
+				let title = browseItem!.title ?? self?.viewModel.chosenItem?.text
+				self?.showNewBrowseView(with: browseItem!, title: title)
+			}.addDisposableTo(disposeBag)
+
+		// if new audio url is assigned, play new audio
+		viewModel
+			.newAudioItems
+			.asObservable()
+			.filter { $0 != nil }
+			.debug("New Audio")
+			.subscribeNext { [weak self] audioItems in
+
+				let player: TIAudioPlayerViewController
+					= UIStoryboard.mainStoryboard().instantiateViewController()
+				let audioManager = (UIApplication.sharedApplication().delegate as! TIAppDelegate).audioManager
+				audioManager.playList = audioItems!
+				audioManager.albumImageUrl.value = self?.viewModel.chosenItem?.image
+				audioManager.title.value = self?.viewModel.chosenItem?.text
+
+				self?.presentViewController(player, animated: true, completion: nil)
+			}.addDisposableTo(disposeBag)
+
+		// Hook up for any error
+		viewModel.errorEvent.asObservable()
+			.filter { $0 != nil }
+			.debug("Error Event")
+			.subscribeNext { [weak self] error in
+
+				// probably better to handle recoverable and non-recoverable error differently
+				// providing retry option for recoverable error would
+				let alert = UIAlertController.getGeneralNetworkErrorAlert()
+				self?.presentViewController(alert, animated: true, completion: nil)
+			}.addDisposableTo(disposeBag)
 	}
 }
 
@@ -187,8 +193,7 @@ extension TIBrowseViewController: UITableViewDataSource {
 			cell.thumbNailImageView.tag = tag
 
 			// fetch image from URL.
-			viewModel.networkService.imageDownloadRequest(with: imageURL) { result in
-
+			viewModel.loadImage(with: imageURL) { result in
 				switch result {
 				case .success(let image):
 					if cell.thumbNailImageView.tag == tag {
@@ -196,7 +201,6 @@ extension TIBrowseViewController: UITableViewDataSource {
 					}
 
 				case .failure(let error):
-					// TODO: refactor and automatically retry
 					print(error)
 				}
 			}

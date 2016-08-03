@@ -168,7 +168,13 @@ final class TINetworkService {
 		let dataTask = session.dataTaskWithRequest(urlRequest) {
 			[weak self] (data, response, error) in
 
-			self?.validate(with: response, error: error, callback: callback)
+			if let validationError
+				= self?.validate(with: response, error: error, callback: callback) {
+				dispatch_async(dispatch_get_main_queue(), {
+					callback(.failure(validationError))
+				})
+				return
+			}
 
 			guard let data = data else {
 				dispatch_async(dispatch_get_main_queue(), {
@@ -215,31 +221,24 @@ final class TINetworkService {
 		with response: NSURLResponse?,
 		error: NSError?,
 		callback: (Result<T>) -> Void
-	) {
+	) -> TINetworkError?{
 
 		// validate for Error
 		if let error = error {
-			dispatch_async(dispatch_get_main_queue(), {
-				callback(.failure(TINetworkError.networkError(error: error)))
-			})
-			return
+			return TINetworkError.networkError(error: error)
 		}
 
 		// validate for data and response
 		guard let response = response as? NSHTTPURLResponse else {
-			dispatch_async(dispatch_get_main_queue(), {
-				callback(.failure(TINetworkError.noResponse))
-			})
-			return
+			return TINetworkError.noResponse
 		}
 
 		// validate for response's status code
 		guard response.statusCode >= 200 && response.statusCode < 300 else {
-			dispatch_async(dispatch_get_main_queue(), {
-				callback(.failure(TINetworkError.serverError(code: response.statusCode)))
-			})
-			return
+			return TINetworkError.serverError(code: response.statusCode)
 		}
+
+		return nil
 	}
 }
 

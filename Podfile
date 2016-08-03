@@ -7,6 +7,7 @@ target 'TuneOut' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SwiftyJSON'
+  pod 'RealmSwift'
 
   target 'TuneOutTests' do
     inherit! :search_paths

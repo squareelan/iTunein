@@ -1,19 +1,27 @@
 PODS:
+  - Realm (1.0.2):
+    - Realm/Headers (= 1.0.2)
+  - Realm/Headers (1.0.2)
+  - RealmSwift (1.0.2):
+    - Realm (= 1.0.2)
   - RxCocoa (2.6.0):
     - RxSwift (~> 2.5)
   - RxSwift (2.6.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - RealmSwift
   - RxCocoa
   - RxSwift
   - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
+  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 3abf9b093e0bd21bda0eb7be9fa2d561ba868c5b
+PODFILE CHECKSUM: d701d9e1970e1e2c66b8ab6cc38775d136345561
 
 COCOAPODS: 1.0.1

@@ -8,25 +8,23 @@
 
 import UIKit
 
-enum StoryboardName: CustomStringConvertible {
+struct StoryboardName {
+	static let main = "Main"
+}
 
-	struct Constants {
-		static let mainStoryboardName = "Main"
-	}
+struct TabBarControllerIdentifier {
+	static let rootTabBar = "rootTabBarController"
+}
 
-	case main
-
-	var description: String {
-		switch self {
-		case .main: return Constants.mainStoryboardName
-		}
-	}
+enum SegueIdentifier {
+	static let showAudioPlayer = "showAudioPlayerSegue"
+	static let showMainPage = "showMainPageSegue"
 }
 
 extension UIStoryboard {
 
 	class func mainStoryboard() -> UIStoryboard {
-		return UIStoryboard(name: StoryboardName.main.description, bundle: nil)
+		return UIStoryboard(name: StoryboardName.main, bundle: nil)
 	}
 
 	func instantiateViewController<T: UIViewController>() -> T {

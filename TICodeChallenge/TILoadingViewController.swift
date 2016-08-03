@@ -11,16 +11,14 @@ import RxSwift
 
 final class TILoadingViewController: UIViewController {
 
-
 	// TODO: create static constants
-	let path = "http://opml.radiotime.com/"
-
+	private let path = "http://opml.radiotime.com/"
 
 	// MARK: - View Life Cycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.navigationController?.setNavigationBarHidden(true, animated: false)
+		navigationController?.setNavigationBarHidden(true, animated: false)
 
 		let networkService =
 			(UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
@@ -29,6 +27,27 @@ final class TILoadingViewController: UIViewController {
 		fetchBrowseMenu(with: networkService, path: path)
 	}
 
+//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//		if segue.identifier == SegueIdentifier.showMainPage {
+//			guard let viewModel = sender as? TIBrowseViewModel else {
+//				// non recoverable
+//				fatalError("Can't instantiate main page. Missing ViewModel...")
+//			}
+//
+//			guard let destination = segue.destinationViewController as? UITabBarController else {
+//				// non recoverable
+//				fatalError("Wrong destination view controller is fetched. Expecting UITabBarController")
+//			}
+//
+//			for vc in destination.viewControllers! {
+//				if let vc = vc as? TIBrowseViewController {
+//					vc.viewModel = viewModel
+//					destination.selectedViewController = vc
+//					break
+//				}
+//			}
+//		}
+//	}
 
 	// MARK: - Network Request - Move to viewModel if create one.
 
@@ -36,19 +55,31 @@ final class TILoadingViewController: UIViewController {
 
 		service.simpleTIGetRequest(
 			with: path
-		) { (result: Result<TIBrowse>) in
+		) { [weak self] (result: Result<TIBrowse>) in
 
 			switch result {
 			case .success(let value):
-				let vc: TIBrowseViewController =
-					UIStoryboard.mainStoryboard().instantiateViewController()
+
+				guard let tabBarController = UIStoryboard.mainStoryboard()
+					.instantiateViewControllerWithIdentifier(
+						TabBarControllerIdentifier.rootTabBar) as? UITabBarController,
+					let navController = tabBarController.viewControllers?[0]
+						as? UINavigationController,
+					let topVc = navController.topViewController as? TIBrowseViewController else {
+
+					// unrecoverable error
+					fatalError("Could not instantiate proper view controller")
+				}
+
 				let newViewModel = TIBrowseViewModel(
 					browseItem: value,
 					title: Variable<String?>(value.title)
 				)
-				vc.viewModel = newViewModel
-				self.navigationController?.setViewControllers([vc], animated: false)
-				
+				topVc.viewModel = newViewModel
+
+				(UIApplication.sharedApplication().delegate as! TIAppDelegate)
+					.window?.rootViewController = tabBarController
+
 			case .failure(let error):
 
 				// TODO: change to debug print
@@ -56,9 +87,18 @@ final class TILoadingViewController: UIViewController {
 
 				// probably better to handle recoverable and non-recoverable error differently
 				// providing retry option for recoverable error would
-				let title = "Network Error"
-				let message = "Sorry, we are having an issue. Please try again later."
-				UIAlertController.create(with: title, message: message)
+				let title = "Network Error".localizedString
+				let message = "Sorry, we are having an issue. Please try again later.".localizedString
+				let alert = UIAlertController.create(
+					with: title,
+					message: message,
+					buttonTitle: "Retry".localizedString,
+					buttonAction: {
+						self?.fetchBrowseMenu(with: service, path: path)
+					}
+				)
+
+				alert.show()
 			}
 		}
 	}
