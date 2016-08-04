@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C8C54011D4C57AB0028C099"
-               BuildableName = "TuneOut.app"
-               BlueprintName = "TuneOut"
-               ReferencedContainer = "container:TuneOut.xcodeproj">
+               BlueprintIdentifier = "D8E0E31A664ED72EE64E77FE209A9E77"
+               BuildableName = "Pods_iTuneIn.framework"
+               BlueprintName = "Pods-iTuneIn"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3C8C54151D4C57AB0028C099"
-               BuildableName = "TuneOut.xctest"
-               BlueprintName = "TuneOutTests"
-               ReferencedContainer = "container:TuneOut.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C8C54011D4C57AB0028C099"
-            BuildableName = "TuneOut.app"
-            BlueprintName = "TuneOut"
-            ReferencedContainer = "container:TuneOut.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C8C54011D4C57AB0028C099"
-            BuildableName = "TuneOut.app"
-            BlueprintName = "TuneOut"
-            ReferencedContainer = "container:TuneOut.xcodeproj">
+            BlueprintIdentifier = "D8E0E31A664ED72EE64E77FE209A9E77"
+            BuildableName = "Pods_iTuneIn.framework"
+            BlueprintName = "Pods-iTuneIn"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3C8C54011D4C57AB0028C099"
-            BuildableName = "TuneOut.app"
-            BlueprintName = "TuneOut"
-            ReferencedContainer = "container:TuneOut.xcodeproj">
+            BlueprintIdentifier = "D8E0E31A664ED72EE64E77FE209A9E77"
+            BuildableName = "Pods_iTuneIn.framework"
+            BlueprintName = "Pods-iTuneIn"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
