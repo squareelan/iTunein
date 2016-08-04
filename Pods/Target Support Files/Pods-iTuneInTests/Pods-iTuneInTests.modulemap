@@ -1,0 +1,6 @@
+framework module Pods_iTuneInTests {
+  umbrella header "Pods-iTuneInTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

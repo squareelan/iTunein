@@ -1,6 +1,6 @@
 platform :ios, '9.0'
 
-target 'TuneOut' do
+target 'iTuneIn' do
 
   use_frameworks!
 
@@ -9,7 +9,7 @@ target 'TuneOut' do
   pod 'SwiftyJSON'
   pod 'RealmSwift'
 
-  target 'TuneOutTests' do
+  target 'iTuneInTests' do
     inherit! :search_paths
     # Pods for testing
   end
