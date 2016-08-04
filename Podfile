@@ -1,13 +1,15 @@
 platform :ios, '9.0'
 
-target 'TICodeChallenge' do
+target 'iTuneIn' do
 
   use_frameworks!
 
   pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'SwiftyJSON'
+  pod 'RealmSwift'
 
-  target 'TICodeChallengeTests' do
+  target 'iTuneInTests' do
     inherit! :search_paths
     # Pods for testing
   end

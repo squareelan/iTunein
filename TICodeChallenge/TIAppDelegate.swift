@@ -7,15 +7,49 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class TIAppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	let networkService = TINetworkServiceManager()
+	let audioManager = TIAudioPlaybackManager(playList: TIPlayList(playItems: []))
+	let favoriteListManager = TIFavoriteListManager()
+
+	func application(
+		application: UIApplication,
+		didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?
+	) -> Bool {
+
+		// apply theme
+		let theme = TITheme.Default
+		TIThemeManager.applyTheme(theme)
+
+		// setting sharedURLCache to greater capacity (50MB in memory, 100MB in disk)
+		let memoryCapacity = 50 * 1024 * 1024 // 50MB
+		let diskCapacity = 100 * 1024 * 1024 // 100MB
+		let path =
+			NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
+
+		let cache = NSURLCache(
+			memoryCapacity: memoryCapacity,
+			diskCapacity: diskCapacity,
+			diskPath: path
+		)
+		NSURLCache.setSharedURLCache(cache)
+
+		// enable background audio playback.
+		let audioSession = AVAudioSession.sharedInstance()
+		do {
+			try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+			try	audioSession.setActive(true)
+		}
+		catch {
+			print(error)
+		}
 
 
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		// Override point for customization after application launch.
 		return true
 	}
 
