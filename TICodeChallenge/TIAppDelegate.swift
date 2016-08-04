@@ -13,7 +13,7 @@ import AVFoundation
 class TIAppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-	var networkService = TINetworkService()
+	var networkService = TINetworkServiceManager()
 	var audioManager = TIAudioPlaybackManager(playList: TIPlayList(playItems: []))
 
 	func application(
@@ -25,9 +25,9 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 		let theme = TITheme.Default
 		TIThemeManager.applyTheme(theme)
 
-		// setting sharedURLCache to greater capacity (20MB in memory, 50MB in disk)
-		let memoryCapacity = 20 * 1024 * 1024 // 20MB
-		let diskCapacity = 50 * 1024 * 1024 // 50MB
+		// setting sharedURLCache to greater capacity (50MB in memory, 100MB in disk)
+		let memoryCapacity = 50 * 1024 * 1024 // 50MB
+		let diskCapacity = 100 * 1024 * 1024 // 100MB
 		let path =
 			NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
 
@@ -39,7 +39,15 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 		NSURLCache.setSharedURLCache(cache)
 
 		// enable background audio playback.
-		try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+		let audioSession = AVAudioSession.sharedInstance()
+		do {
+			try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+			try	audioSession.setActive(true)
+		}
+		catch {
+			print(error)
+		}
+
 
 		return true
 	}

@@ -77,6 +77,7 @@ extension TIBrowseViewController: ReactiveView {
 			.title
 			.asObservable()
 			.debug("Title")
+			.observeOn(MainScheduler.instance)
 			.subscribeNext { [weak self] text in self?.title = text }
 			.addDisposableTo(disposeBag)
 
@@ -85,6 +86,7 @@ extension TIBrowseViewController: ReactiveView {
 			.activityCount
 			.asObservable()
 			.debug("Activity Count")
+			.observeOn(MainScheduler.instance)
 			.subscribeNext { [weak self] count in
 				if (count > 0) {
 					self?.startNetworkActivityIndicator(isInteractionEnabled: false)
@@ -100,6 +102,7 @@ extension TIBrowseViewController: ReactiveView {
 			.asObservable()
 			.filter { $0 != nil }
 			.debug("New Browse Item")
+			.observeOn(MainScheduler.instance)
 			.subscribeNext { [weak self] browseItem in
 
 				// Covering the case where title is missed out for some outline.
@@ -113,14 +116,15 @@ extension TIBrowseViewController: ReactiveView {
 			.asObservable()
 			.filter { $0 != nil }
 			.debug("New Audio")
+			.observeOn(MainScheduler.instance)
 			.subscribeNext { [weak self] audioItems in
 
 				let player: TIAudioPlayerViewController
 					= UIStoryboard.mainStoryboard().instantiateViewController()
 				let audioManager = (UIApplication.sharedApplication().delegate as! TIAppDelegate).audioManager
 				audioManager.playList = audioItems!
-				audioManager.albumImageUrl.value = self?.viewModel.chosenItem?.image
-				audioManager.title.value = self?.viewModel.chosenItem?.text
+//				audioManager.albumImageUrl.value = self?.viewModel.chosenItem?.image
+//				audioManager.title.value = self?.viewModel.chosenItem?.text
 
 				self?.presentViewController(player, animated: true, completion: nil)
 			}.addDisposableTo(disposeBag)
@@ -129,6 +133,7 @@ extension TIBrowseViewController: ReactiveView {
 		viewModel.errorEvent.asObservable()
 			.filter { $0 != nil }
 			.debug("Error Event")
+			.observeOn(MainScheduler.instance)
 			.subscribeNext { [weak self] error in
 
 				// probably better to handle recoverable and non-recoverable error differently
@@ -184,6 +189,8 @@ extension TIBrowseViewController: UITableViewDataSource {
 			cell.subTitleLabel.hidden = true
 		}
 
+
+		// TODO: Refactor this using local caching
 		if let imageURL = outline.image {
 			cell.thumbNailImageView.hidden = false
 
@@ -219,7 +226,7 @@ extension TIBrowseViewController: UITableViewDelegate {
 
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-		viewModel.request(for: indexPath.section, row: indexPath.row)
+		viewModel.loadRequest(for: indexPath.section, row: indexPath.row)
 	}
 }
 

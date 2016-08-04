@@ -55,6 +55,11 @@ enum TIOutlineType: String {
 
 struct TIOutline: JsonDeserializable {
 
+	struct Constants {
+		static let MORE_STATIONS_KEY = "nextStations"
+		static let MORE_SHOWS_KEY = "nextShows"
+	}
+
 	let presetId: String?
 	let guidedId: String?
 	let genreId: String?

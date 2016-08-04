@@ -10,20 +10,9 @@ import UIKit
 
 class TIBrowseTableViewCell: UITableViewCell {
 
-	@IBOutlet var thumbNailImageView: UIImageView!
-	@IBOutlet var titleLabel: UILabel!
-	@IBOutlet var subTitleLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+	@IBOutlet private (set) var thumbNailImageView: UIImageView!
+	@IBOutlet private (set) var titleLabel: UILabel!
+	@IBOutlet private (set) var subTitleLabel: UILabel!
 
 	override func prepareForReuse() {
 		thumbNailImageView.image = UIImage(named: "placeHolderImage")

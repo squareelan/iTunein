@@ -7,10 +7,20 @@
 //
 
 import AVFoundation
+import MediaPlayer
 import RxSwift
 import RxCocoa
 
-final class TIAudioPlaybackManager: NSObject {
+enum TIAudioPlaybackError: ErrorType {
+
+	// non recoverable errors
+	case invalidURL
+	case invalidAudio
+
+	static let TINetworkErrorDomain = "com.SQuareElan.TINetworkService"
+}
+
+final class TIAudioPlaybackManager: NSObject, TIAudioPlaybackService {
 
 	struct Constants {
 		static let AVPLAYER_STATUS_KEY = "status"
@@ -30,18 +40,17 @@ final class TIAudioPlaybackManager: NSObject {
 		}
 	}
 
-	private (set) var albumImageUrl = Variable<String?>(nil)
-	private (set) var title = Variable<String?>(nil)
-	let isReady = Variable<Bool>(false)
-	let isLoading = Variable<Bool>(false)
-	let isPlaying = Variable<Bool>(false)
-	let error = Variable<ErrorType?>(nil)
-	let volume = Variable<Float>(Constants.DefaultVolume)
-//	let muted = Variable<Bool>(false)
+//	private (set) var albumImageUrl = Variable<String?>(nil)
+//	private (set) var title = Variable<String?>(nil)
+	private (set) var isReady = Variable<Bool>(false)
+	private (set) var isLoading = Variable<Bool>(false)
+	private (set) var isPlaying = Variable<Bool>(false)
+	private (set) var error = Variable<TIAudioPlaybackError?>(nil)
+	private (set) var volume = Variable<Float>(AVAudioSession.sharedInstance().outputVolume)
 
 	private (set) var currentIndex = Variable<Int?>(nil)
 
-	private (set) var currentItem: TIPlayItem? {
+	private var currentItem: TIPlayItem? {
 		didSet {
 			// update current Index
 			guard let currentItem = currentItem else {
@@ -54,27 +63,29 @@ final class TIAudioPlaybackManager: NSObject {
 			guard let url = NSURL(string: currentItem.url) else {
 
 				// Don't initialize AVplayer if no item is available
+				error.value = TIAudioPlaybackError.invalidURL
 				return
 			}
 
 			setupAudioPlayer(with: url)
+
+			// configure prev and next remote command
+			let prevCommandEnable = currentIndex.value > 0
+			let nextCommandEnable = currentIndex.value < playList.playItems.count-1
+
+			enablePreviousRemoteCommand(prevCommandEnable)
+			enableNextRemoteCommand(nextCommandEnable)
 		}
 	}
 
-//	var volume: Float = Constants.DefaultVolume {
-//		didSet {
-//			audioPlayer?.volume = volume
-//		}
-//	}
-
-
 	private let disposeBag = DisposeBag()
 
-
+	// MARK: - Initializer
 	init(playList: TIPlayList) {
 		self.playList = playList
 	}
 
+	// MARK: - Playback control
 	func play() {
 		audioPlayer?.play()
 	}
@@ -106,8 +117,13 @@ final class TIAudioPlaybackManager: NSObject {
 		}
 	}
 
+	// MARK: - Audio item set up
 	private func setupAudioPlayer(with url: NSURL) {
 
+		// cleaning up residual error
+		error.value = nil
+
+		// instantiate asset, play item, player.
 		let asset = AVURLAsset(URL: url)
 		let keys = [
 			"tracks",
@@ -120,14 +136,16 @@ final class TIAudioPlaybackManager: NSObject {
 		]
 
 		// preload some values
-		asset.loadValuesAsynchronouslyForKeys(keys) {
+		asset.loadValuesAsynchronouslyForKeys(keys) { [weak self] Void in
 
 			for key in keys {
 				var error: NSError?
 				let keyStatus = asset.statusOfValueForKey(key, error: &error)
 				guard keyStatus != .Failed && error == nil else {
 
-					// TODO: Alert that this can't be operated
+					// create invalid error for now. Specific error for each key
+					// would be helpful
+					self?.error.value = TIAudioPlaybackError.invalidAudio
 					return
 				}
 			}
@@ -148,7 +166,12 @@ final class TIAudioPlaybackManager: NSObject {
 			player.pause()
 			player.replaceCurrentItemWithPlayerItem(playerItem)
 		}
+
+		// first time set up
 		else {
+
+			setUpMediaCommand()
+
 			// rx_observe is simple KVO wrapper. Listening for status change.
 			audioPlayer = AVPlayer(playerItem: playerItem)
 			audioPlayer!
@@ -157,7 +180,6 @@ final class TIAudioPlaybackManager: NSObject {
 				.shareReplayLatestWhileConnected()
 				.debug("AudioPlayer Status Changed")
 				.subscribeNext{ [weak self] status in
-//					self?.playerStatus.value = status
 					self?.isReady.value = (status! == .ReadyToPlay)
 				}.addDisposableTo(disposeBag)
 
@@ -188,13 +210,83 @@ final class TIAudioPlaybackManager: NSObject {
 					self?.isPlaying.value = rate > 0
 				}.addDisposableTo(disposeBag)
 
+			AVAudioSession.sharedInstance()
+				.rx_observe(Float.self, "outputVolume")
+				.distinctUntilChanged { $0 == $1 }
+				.filter{ $0 != nil }
+				// Adding very small delay to prevent update cycle
+				.throttle(0.025, scheduler: MainScheduler.instance)
+				.debug("outputVolume")
+				.observeOn(MainScheduler.instance)
+				.subscribeNext { [weak self] volume in
+					self?.volume.value = volume!
+				}.addDisposableTo(disposeBag)
+
 			volume
 				.asObservable()
 				.distinctUntilChanged()
 				.debug("volume update")
+				.observeOn(MainScheduler.instance)
 				.subscribeNext { [weak self] newVolume in
 					self?.audioPlayer!.volume = newVolume
+
+					let volumeView = MPVolumeView()
+					for view in volumeView.subviews {
+						guard let slider = view as? UISlider else {
+							continue
+						}
+						slider.setValue(newVolume, animated: false)
+					}
+				}.addDisposableTo(disposeBag)
+
+			isReady
+				.asObservable()
+				.subscribeNext { [weak self] ready in
+					self?.enablePlayRemoteCommand(ready)
+					self?.enablePauseRemoteCommand(ready)
 				}.addDisposableTo(disposeBag)
 		}
+	}
+
+	// MARK: - Media remote command
+	private func setUpMediaCommand() {
+
+		let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
+
+		commandCenter.previousTrackCommand.addTarget(
+			self,
+			action: #selector(TIAudioPlaybackManager.loadPreviousItem)
+		)
+
+		commandCenter.playCommand.addTarget(
+			self,
+			action: #selector(TIAudioPlaybackManager.play)
+		)
+
+		commandCenter.pauseCommand.addTarget(
+			self,
+			action: #selector(TIAudioPlaybackManager.pause)
+		)
+
+		commandCenter.nextTrackCommand.addTarget(
+			self,
+			action: #selector(TIAudioPlaybackManager.loadNextItem)
+		)
+	}
+
+	private func enablePreviousRemoteCommand(enabled: Bool) {
+		MPRemoteCommandCenter.sharedCommandCenter().previousTrackCommand.enabled = enabled
+	}
+
+	private func enablePlayRemoteCommand(enabled: Bool) {
+		MPRemoteCommandCenter.sharedCommandCenter().playCommand.enabled = enabled
+	}
+
+	private func enablePauseRemoteCommand(enabled: Bool) {
+		MPRemoteCommandCenter.sharedCommandCenter().pauseCommand.enabled = enabled
+	}
+
+	private func enableNextRemoteCommand(enabled: Bool) {
+		MPRemoteCommandCenter.sharedCommandCenter().nextTrackCommand.enabled = enabled
 	}
 }

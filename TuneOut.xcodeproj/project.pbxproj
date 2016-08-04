@@ -23,7 +23,7 @@
 		3C8C540D1D4C57AB0028C099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540C1D4C57AB0028C099 /* Assets.xcassets */; };
 		3C8C54101D4C57AB0028C099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540E1D4C57AB0028C099 /* LaunchScreen.storyboard */; };
 		3C8C541B1D4C57AB0028C099 /* TICodeChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */; };
-		3C8C542D1D4C606B0028C099 /* TINetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C542C1D4C606B0028C099 /* TINetworkService.swift */; };
+		3C8C542D1D4C606B0028C099 /* TINetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C542C1D4C606B0028C099 /* TINetworkServiceManager.swift */; };
 		3C8C542F1D4C62560028C099 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C542E1D4C62560028C099 /* Result.swift */; };
 		3C8C54311D4C638A0028C099 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54301D4C638A0028C099 /* HttpMethod.swift */; };
 		3C8C54331D4C66A90028C099 /* JsonDeserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */; };
@@ -36,6 +36,8 @@
 		3C8C544B1D4CED890028C099 /* TIThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544A1D4CED890028C099 /* TIThemeManager.swift */; };
 		3C8C544E1D4CEEAE0028C099 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544D1D4CEEAE0028C099 /* Theme.swift */; };
 		3C8C54501D4D1A610028C099 /* TIBrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */; };
+		3C92A6181D5290CE002C1FB7 /* TINetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C92A6171D5290CE002C1FB7 /* TINetworkService.swift */; };
+		3C92A61A1D52924B002C1FB7 /* TIAudioPlaybackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C92A6191D52924B002C1FB7 /* TIAudioPlaybackService.swift */; };
 		3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */; };
 		49F643F04885952E933ECD95 /* Pods_TuneOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C804AFE2D7B1A3A8F3A1281A /* Pods_TuneOut.framework */; };
 		7C6DAADDA84979EA5FF8167B /* Pods_TuneOutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CDF714B062E04CCF60C7758 /* Pods_TuneOutTests.framework */; };
@@ -75,7 +77,7 @@
 		3C8C54161D4C57AB0028C099 /* TuneOut.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TuneOut.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C541A1D4C57AB0028C099 /* TICodeChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TICodeChallengeTests.swift; sourceTree = "<group>"; };
 		3C8C541C1D4C57AB0028C099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C8C542C1D4C606B0028C099 /* TINetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TINetworkService.swift; sourceTree = "<group>"; };
+		3C8C542C1D4C606B0028C099 /* TINetworkServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TINetworkServiceManager.swift; sourceTree = "<group>"; };
 		3C8C542E1D4C62560028C099 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		3C8C54301D4C638A0028C099 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDeserializable.swift; sourceTree = "<group>"; };
@@ -88,6 +90,8 @@
 		3C8C544A1D4CED890028C099 /* TIThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIThemeManager.swift; sourceTree = "<group>"; };
 		3C8C544D1D4CEEAE0028C099 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3C8C544F1D4D1A610028C099 /* TIBrowseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseViewModel.swift; sourceTree = "<group>"; };
+		3C92A6171D5290CE002C1FB7 /* TINetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TINetworkService.swift; sourceTree = "<group>"; };
+		3C92A6191D52924B002C1FB7 /* TIAudioPlaybackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIAudioPlaybackService.swift; sourceTree = "<group>"; };
 		3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIAudioPlaybackManager.swift; sourceTree = "<group>"; };
 		55E1EC62A3F956C76ADBFFFD /* Pods-TuneOutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOutTests/Pods-TuneOutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		77B434331299FFBE4DF83E6B /* Pods-TuneOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneOut.release.xcconfig"; path = "Pods/Target Support Files/Pods-TuneOut/Pods-TuneOut.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,11 +201,13 @@
 		3C8C54251D4C5B370028C099 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				3C8C542C1D4C606B0028C099 /* TINetworkService.swift */,
+				3C92A6171D5290CE002C1FB7 /* TINetworkService.swift */,
+				3C8C542C1D4C606B0028C099 /* TINetworkServiceManager.swift */,
+				3C92A6191D52924B002C1FB7 /* TIAudioPlaybackService.swift */,
+				3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */,
 				3C8C542E1D4C62560028C099 /* Result.swift */,
 				3C8C54301D4C638A0028C099 /* HttpMethod.swift */,
 				3C8C54321D4C66A90028C099 /* JsonDeserializable.swift */,
-				3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -505,12 +511,14 @@
 				3C8C54501D4D1A610028C099 /* TIBrowseViewModel.swift in Sources */,
 				3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */,
 				3C48EFC71D4E97DC00A250C2 /* UIAlertController+Extension.swift in Sources */,
-				3C8C542D1D4C606B0028C099 /* TINetworkService.swift in Sources */,
+				3C8C542D1D4C606B0028C099 /* TINetworkServiceManager.swift in Sources */,
 				3C7B27F01D4DA211001D03DD /* Identifiable.swift in Sources */,
 				3C8C54351D4C6B2D0028C099 /* TIBrowse.swift in Sources */,
+				3C92A61A1D52924B002C1FB7 /* TIAudioPlaybackService.swift in Sources */,
 				3C4EF3981D4FD8FC00FB651F /* TIBrowseViewController.swift in Sources */,
 				3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */,
 				3C8C54491D4CED7E0028C099 /* TITheme.swift in Sources */,
+				3C92A6181D5290CE002C1FB7 /* TINetworkService.swift in Sources */,
 				3C7B27E91D4D6CE7001D03DD /* UIStoryboard+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

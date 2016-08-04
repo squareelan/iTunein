@@ -18,7 +18,7 @@ extension UIAlertController {
 			preferredStyle: .Alert
 		)
 
-		let action = UIAlertAction(title: "OK", style: .Default , handler: nil)
+		let action = UIAlertAction(title: "OK".localizedString, style: .Default , handler: nil)
 		alert.addAction(action)
 		return alert
 	}
@@ -47,6 +47,12 @@ extension UIAlertController {
 	static func getGeneralNetworkErrorAlert() -> UIAlertController{
 		let title = "Network Error".localizedString
 		let message = "Sorry, we are having an issue. Please try again later.".localizedString
+		return UIAlertController.create(with: title, message: message)
+	}
+
+	static func getGeneralAudioErrorAlert() -> UIAlertController{
+		let title = "Playback Error".localizedString
+		let message = "Sorry, we cannot play this audio stream. Please try again later.".localizedString
 		return UIAlertController.create(with: title, message: message)
 	}
 

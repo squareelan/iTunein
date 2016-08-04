@@ -9,6 +9,8 @@
 import SwiftyJSON
 
 struct TIPlayList: JsonDeserializable, Equatable {
+	var title: String? = ""
+	var imageUrlStr: String? = ""
 	let playItems: [TIPlayItem]
 
 	init?(with json: JSON) {
@@ -23,7 +25,9 @@ struct TIPlayList: JsonDeserializable, Equatable {
 		self.playItems = items
 	}
 
-	init(playItems: [TIPlayItem]) {
+	init(title: String? = "", imageUrlStr: String? = "", playItems: [TIPlayItem]) {
+		self.title = title
+		self.imageUrlStr = imageUrlStr
 		self.playItems = playItems
 	}
 }

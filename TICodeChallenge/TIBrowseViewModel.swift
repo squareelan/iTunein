@@ -72,9 +72,18 @@ final class TIBrowseViewModel {
 		}
 	}
 
-	// MARK: - Network Request
+	// MARK: - Network Request -
 
-	func request(for section: Int, row: Int) {
+	// MARK: Public
+	func loadImage(with urlString: String, completion: Result<UIImage> -> ()) {
+
+		// fetch image from URL.
+		networkService.imageDownloadRequest(with: urlString) { result in
+			completion(result)
+		}
+	}
+
+	func loadRequest(for section: Int, row: Int) {
 
 		let item = outline(for: section, row: row)
 		chosenItem = item     // saving for later reference
@@ -97,7 +106,8 @@ final class TIBrowseViewModel {
 		}
 	}
 
-	func loadLink(
+	// MARK: Private
+	private func loadLink(
 		with service: TINetworkService,
 		path: String,
 		title temporaryTitle: String?
@@ -121,7 +131,7 @@ final class TIBrowseViewModel {
 		}
 	}
 
-	func loadAudio(with service: TINetworkService, path: String) {
+	private func loadAudio(with service: TINetworkService, path: String) {
 
 		self.activityCount.value += 1
 
@@ -132,20 +142,14 @@ final class TIBrowseViewModel {
 			self.activityCount.value -= 1
 
 			switch result {
-			case .success(let value):
+			case .success(var value):
+				value.title = self.chosenItem?.text
+				value.imageUrlStr = self.chosenItem?.image
 				self.newAudioItems.value = value
 
 			case .failure(let error): print(error)
 			self.errorEvent.value = error
 			}
-		}
-	}
-
-	func loadImage(with urlString: String, completion: Result<UIImage> -> ()) {
-
-		// fetch image from URL.
-		networkService.imageDownloadRequest(with: urlString) { result in
-			completion(result)
 		}
 	}
 }
