@@ -13,8 +13,9 @@ import AVFoundation
 class TIAppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-	var networkService = TINetworkServiceManager()
-	var audioManager = TIAudioPlaybackManager(playList: TIPlayList(playItems: []))
+	let networkService = TINetworkServiceManager()
+	let audioManager = TIAudioPlaybackManager(playList: TIPlayList(playItems: []))
+	let favoriteListManager = TIFavoriteListManager()
 
 	func application(
 		application: UIApplication,

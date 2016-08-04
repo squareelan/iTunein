@@ -8,36 +8,7 @@
 
 import SwiftyJSON
 
-struct TIPlayList: JsonDeserializable, Equatable {
-	var title: String? = ""
-	var imageUrlStr: String? = ""
-	let playItems: [TIPlayItem]
-
-	init?(with json: JSON) {
-		var items = [TIPlayItem]()
-
-		for itemJson in json["body"].arrayValue {
-
-			if let item = TIPlayItem(with: itemJson) {
-				items.append(item)
-			}
-		}
-		self.playItems = items
-	}
-
-	init(title: String? = "", imageUrlStr: String? = "", playItems: [TIPlayItem]) {
-		self.title = title
-		self.imageUrlStr = imageUrlStr
-		self.playItems = playItems
-	}
-}
-
-func ==(lhs: TIPlayList, rhs: TIPlayList) -> Bool {
-	return lhs.playItems == rhs.playItems
-}
-
-
-struct TIPlayItem: JsonDeserializable, Equatable {
+struct TIPlayItem: Equatable {
 	let element: String
 	let url: String
 	let reliability: Int
@@ -46,6 +17,20 @@ struct TIPlayItem: JsonDeserializable, Equatable {
 	let position: Int
 	let guideId: String
 	let isDirect: Bool
+}
+
+func ==(lhs: TIPlayItem, rhs: TIPlayItem) -> Bool {
+	return lhs.element == rhs.element &&
+		lhs.url == rhs.url &&
+		lhs.reliability == rhs.reliability &&
+		lhs.bitrate == rhs.bitrate &&
+		lhs.mediaType == rhs.mediaType &&
+		lhs.position == rhs.position &&
+		lhs.guideId == rhs.guideId &&
+		lhs.isDirect == rhs.isDirect
+}
+
+extension TIPlayItem: JsonDecodable {
 
 	init?(with json: JSON) {
 		self.element = json["element"].stringValue
@@ -59,13 +44,19 @@ struct TIPlayItem: JsonDeserializable, Equatable {
 	}
 }
 
-func ==(lhs: TIPlayItem, rhs: TIPlayItem) -> Bool {
-	return lhs.element == rhs.element &&
-		lhs.url == rhs.url &&
-		lhs.reliability == rhs.reliability &&
-		lhs.bitrate == rhs.bitrate &&
-		lhs.mediaType == rhs.mediaType &&
-		lhs.position == rhs.position &&
-		lhs.guideId == rhs.guideId &&
-		lhs.isDirect == rhs.isDirect
+extension TIPlayItem: RealmConvertible {
+
+	func convert() -> TIPlayItemRealm {
+
+		let obj = TIPlayItemRealm()
+		obj.element = element
+		obj.url = url
+		obj.reliability = reliability
+		obj.bitrate = bitrate
+		obj.mediaType = mediaType
+		obj.position = position
+		obj.guideId = guideId
+		obj.isDirect = isDirect
+		return obj
+	}
 }

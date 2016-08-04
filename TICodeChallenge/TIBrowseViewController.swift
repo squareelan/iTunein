@@ -38,23 +38,6 @@ final class TIBrowseViewController: UIViewController {
 		
 	}
 
-
-//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//		if segue.identifier == SegueIdentifier.showAudioPlayer {
-//			guard let url = sender as? NSURL else {
-//				let message = "Sorry, this item is not playable.".localizedString
-//				let alert = UIAlertController.create(with: nil, message: message)
-//				self.presentViewController(alert, animated: true, completion: nil)
-//				return
-//			}
-//
-//			guard let destination =
-//				segue.destinationViewController as? AVPlayerViewController else {
-//					fatalError("Wrong destination ViewController...")
-//			}
-//		}
-//	}
-
 	func showNewBrowseView(with browseItem: TIBrowse, title: String?) {
 		let vc: TIBrowseViewController =
 			UIStoryboard.mainStoryboard().instantiateViewController()

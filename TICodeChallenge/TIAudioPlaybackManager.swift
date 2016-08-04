@@ -20,7 +20,7 @@ enum TIAudioPlaybackError: ErrorType {
 	static let TINetworkErrorDomain = "com.SQuareElan.TINetworkService"
 }
 
-final class TIAudioPlaybackManager: NSObject, TIAudioPlaybackService {
+final class TIAudioPlaybackManager: NSObject, AudioPlaybackService {
 
 	struct Constants {
 		static let AVPLAYER_STATUS_KEY = "status"

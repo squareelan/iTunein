@@ -25,10 +25,12 @@ final class TIAudioPlayerViewController: UIViewController {
 	@IBOutlet private var noItemView: UIView!
 
 	// MARK: - Private property
-	private let audioManager: TIAudioPlaybackService =
+	private let audioManager: AudioPlaybackService =
 		(UIApplication.sharedApplication().delegate as! TIAppDelegate).audioManager
 	private let networkService =
 		(UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
+	private let favoriteListManager =
+		(UIApplication.sharedApplication().delegate as! TIAppDelegate).favoriteListManager
 	private let disposeBag = DisposeBag()
 
 	// MARK: - View life cycle
@@ -50,6 +52,20 @@ final class TIAudioPlayerViewController: UIViewController {
 				urlString: audioManager.playList.imageUrlStr
 			)
 
+			favoriteListManager.getList { result in
+				switch result {
+				case .success(let favoriteLists):
+					let isMatching = favoriteLists.filter {
+						$0.parentNodeKey == self.audioManager.playList.parentNodeKey
+					}.count > 0
+					self.favoriteButton.selected = isMatching
+
+				case .failure:
+					let alert = UIAlertController.create(with: nil, message: "Failed to get status")
+					alert.show()
+				}
+			}
+
 			setUpRx()
 			
 			NSNotificationCenter.defaultCenter().addObserver(
@@ -65,7 +81,7 @@ final class TIAudioPlayerViewController: UIViewController {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 
-	func loadCoverImage(with service: TINetworkService, urlString: String?) {
+	func loadCoverImage(with service: NetworkService, urlString: String?) {
 		guard let urlStr = urlString else {
 			coverImageView.image = UIImage(named: "tuneout")
 			return
@@ -106,7 +122,7 @@ final class TIAudioPlayerViewController: UIViewController {
 		}
 	}
 
-	@IBAction private func muteButton(sender: UIButton) {
+	@IBAction private func muteButtonPressed(sender: UIButton) {
 		if volumnSlider.value > 0 {
 			sender.selected = !sender.selected
 
@@ -122,12 +138,22 @@ final class TIAudioPlayerViewController: UIViewController {
 		audioManager.loadNextItem()
 	}
 
-	@IBAction private func favoriteButtonPressed(sender: AnyObject) {
-		let alert = UIAlertController.create(
-			with: nil,
-			message: "Favorite feature is not available yet.".localizedString
-		)
-		alert.show()
+	@IBAction private func favoriteButtonPressed(sender: UIButton) {
+
+		sender.enabled = false
+
+		// This could be factored out for testibility
+		let currentPlayList = audioManager.playList
+		favoriteListManager.toggleFavorite(currentPlayList) { result in
+			sender.enabled = true
+
+			switch result {
+			case .success: sender.selected = !sender.selected
+			case .failure:
+				let alert = UIAlertController.create(with: "", message: "Failed to mark favorite")
+				alert.show()
+			}
+		}
 	}
 }
 
@@ -136,42 +162,19 @@ extension TIAudioPlayerViewController: ReactiveView {
 	// TODO: create ViewModel instead of directly binding with audioManager
 	func setUpRx() {
 
-		// MARK: - Main UI state -
-//		audioManager
-//			.title
-//			.asObservable()
-//			.distinctUntilChanged { $0 == $1 }
-//			.debug("title")
-//			.observeOn(MainScheduler.instance)
-//			.subscribeNext { [weak self] title in
-//				self?.titleLabel.text = title
-//			}.addDisposableTo(disposeBag)
+		// MARK: - Error Handling -
+		audioManager
+			.error
+			.asObservable()
+			.filter { $0 != nil }
+			.debug("audio error")
+			.observeOn(MainScheduler.instance)
+			.subscribeNext { [weak self] error in
+				let alert = UIAlertController.getGeneralAudioErrorAlert()
+				self?.presentViewController(alert, animated: true, completion: nil)
+			}.addDisposableTo(disposeBag)
 
-//		audioManager
-//			.albumImageUrl
-//			.asObservable()
-//			.distinctUntilChanged { $0 == $1 }
-//			.debug("image")
-//			.observeOn(MainScheduler.instance)
-//			.subscribeNext { [weak self] urlStr in
-//
-//				guard let urlStr = urlStr else {
-//					self?.coverImageView.image = UIImage(named: "tuneout")
-//					return
-//				}
-//
-//				self?.networkService
-//					.imageDownloadRequest(with: urlStr) { [weak self] result in
-//						switch result {
-//						case .success(let image):
-//							self?.coverImageView.image = image
-//
-//						case .failure(let error):
-//							print(error)
-//						}
-//				}
-//			}.addDisposableTo(disposeBag)
-
+		// MARK: - Media control state -
 		audioManager
 			.isLoading
 			.asObservable()
@@ -187,18 +190,6 @@ extension TIAudioPlayerViewController: ReactiveView {
 				}
 			}.addDisposableTo(disposeBag)
 
-		audioManager
-			.error
-			.asObservable()
-			.filter { $0 != nil }
-			.debug("audio error")
-			.observeOn(MainScheduler.instance)
-			.subscribeNext { [weak self] error in
-				let alert = UIAlertController.getGeneralAudioErrorAlert()
-				self?.presentViewController(alert, animated: true, completion: nil)
-			}.addDisposableTo(disposeBag)
-
-		// MARK: - Media control state -
 		audioManager
 			.isReady
 			.asObservable()
@@ -257,25 +248,8 @@ extension TIAudioPlayerViewController: ReactiveView {
 
 
 		// MARK: - Volume control -
-		audioManager
-			.volume
-			.asObservable()
-			.shareReplayLatestWhileConnected()
-			.debug("volume to slider")
-			.bindTo(volumnSlider.rx_value)
-			.addDisposableTo(disposeBag)
 
-		volumnSlider
-			.rx_value
-			.asObservable()
-			.shareReplayLatestWhileConnected()
-			// Adding very small delay before updating value to manager
-			// This is work around to prevent old value is being assigned
-			// back.
-			.throttle(0.025, scheduler: MainScheduler.instance)
-			.debug("slider to volume")
-			.bindTo(audioManager.volume)
-			.addDisposableTo(disposeBag)
+		volumnSlider.rx_value <-> audioManager.volume
 
 		audioManager
 			.volume

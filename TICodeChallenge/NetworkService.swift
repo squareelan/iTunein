@@ -1,5 +1,5 @@
 //
-//  TINetworkService.swift
+//  NetworkService.swift
 //  TuneOut
 //
 //  Created by Ian on 8/3/16.
@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-protocol TINetworkService {
+protocol NetworkService {
 
-	func simpleTIGetRequest<T: JsonDeserializable>(
+	func simpleTIGetRequest<T: JsonDecodable>(
 		with urlString: String,
 		     callback: (Result<T>) -> Void
 	) -> NSURLSessionDataTask?
@@ -21,7 +21,7 @@ protocol TINetworkService {
 		     callback: (Result<UIImage>) -> Void
 		) -> NSURLSessionDataTask?
 
-	func request<T: JsonDeserializable>(
+	func request<T: JsonDecodable>(
 		with url: NSURL,
 		     method: HTTPMethod,
 		     body: AnyObject?,

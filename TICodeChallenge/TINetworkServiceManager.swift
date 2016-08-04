@@ -26,9 +26,9 @@ enum TINetworkError: ErrorType {
 	static let TINetworkErrorDomain = "com.SQuareElan.TINetworkService"
 }
 
-final class TINetworkServiceManager: TINetworkService {
+final class TINetworkServiceManager: NetworkService {
 
-	func simpleTIGetRequest<T: JsonDeserializable>(
+	func simpleTIGetRequest<T: JsonDecodable>(
 		with urlString: String,
 		callback: (Result<T>) -> Void
 	) -> NSURLSessionDataTask? {
@@ -136,7 +136,7 @@ final class TINetworkServiceManager: TINetworkService {
 		return dataTask
 	}
 
-	func request<T: JsonDeserializable>(
+	func request<T: JsonDecodable>(
 		with url: NSURL,
 		method: HTTPMethod,
 		body: AnyObject?,
@@ -178,7 +178,7 @@ final class TINetworkServiceManager: TINetworkService {
 			}
 		}
 
-		print("[🐙\(TINetworkService.self)] request: \(urlRequest.description)")
+		print("[🐙\(NetworkService.self)] request: \(urlRequest.description)")
 
 		// create dataTask
 		let session = NSURLSession.sharedSession()
@@ -216,7 +216,7 @@ final class TINetworkServiceManager: TINetworkService {
 				}
 
 				// Success!!
-				print("[🐙\(TINetworkService.self)] response: \(nsJson)")
+				print("[🐙\(NetworkService.self)] response: \(nsJson)")
 				dispatch_async(dispatch_get_main_queue(), {
 					callback(.success(object))
 				})

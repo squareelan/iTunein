@@ -1,5 +1,5 @@
 //
-//  JsonDeserializable.swift
+//  JsonDecodable.swift
 //  TICodeChallenge
 //
 //  Created by Ian on 7/29/16.
@@ -8,6 +8,6 @@
 
 import SwiftyJSON
 
-protocol JsonDeserializable {
+protocol JsonDecodable {
 	init?(with json: JSON)
 }

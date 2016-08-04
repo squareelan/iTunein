@@ -1,5 +1,5 @@
 //
-//  TIAudioPlaybackService.swift
+//  AudioPlaybackService.swift
 //  TuneOut
 //
 //  Created by Ian on 8/3/16.
@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import RxSwift
 
-protocol TIAudioPlaybackService {
+protocol AudioPlaybackService {
 	var audioPlayer: AVPlayer? { get set }
 	var playList: TIPlayList { get set }
 

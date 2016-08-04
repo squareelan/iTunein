@@ -2,42 +2,73 @@
 //  TIPlaylist.swift
 //  TuneOut
 //
-//  Created by Ian on 8/1/16.
+//  Created by Ian on 8/3/16.
 //  Copyright © 2016 Yongjun Yoo. All rights reserved.
 //
 
-import Foundation
-import RealmSwift
+import SwiftyJSON
 
-final class TIPlayListRealm: Object {
+struct TIPlayList: Equatable {
 
-	dynamic var name: String = ""
-	dynamic var playItems = [TIPlayItemRealm]()
+	var title: String? = ""
+	var subTitle: String? = ""
+	var imageUrlStr: String? = ""
+	var parentNodeKey: String? = ""
 
-// Specify properties to ignore (Realm won't persist these)
-    
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+	let playItems: [TIPlayItem]
 
-	override static func primaryKey() -> String? {
-		return "name"
+	init(title: String? = "",
+	     subTitle: String? = "",
+	     imageUrlStr: String? = "",
+	     parentNodeKey: String? = "",
+	     playItems: [TIPlayItem]
+		) {
+
+		self.title = title
+		self.subTitle = subTitle
+		self.imageUrlStr = imageUrlStr
+		self.playItems = playItems
+		self.parentNodeKey = parentNodeKey
 	}
 }
 
-final class TIPlayItemRealm: Object {
-	dynamic var element: String = ""
-	dynamic var url: String = ""
-	dynamic var reliability: Int = 0
-	dynamic var bitrate: Int = 0
-	dynamic var mediaType: String = ""
-	dynamic var position: Int = 0
-	dynamic var guideId: String = ""
-	dynamic var isDirect: Bool = false
+func ==(lhs: TIPlayList, rhs: TIPlayList) -> Bool {
+	return lhs.playItems == rhs.playItems &&
+		lhs.title == rhs.title &&
+		lhs.subTitle == rhs.subTitle &&
+		lhs.imageUrlStr == rhs.imageUrlStr &&
+		lhs.parentNodeKey == rhs.parentNodeKey
+}
 
-	override static func primaryKey() -> String? {
-		return "guideId"
+extension TIPlayList: JsonDecodable {
+
+	init?(with json: JSON) {
+		var items = [TIPlayItem]()
+
+		for itemJson in json["body"].arrayValue {
+
+			if let item = TIPlayItem(with: itemJson) {
+				items.append(item)
+			}
+		}
+		self.playItems = items
 	}
 }
 
+extension TIPlayList: RealmConvertible {
 
+	func convert() -> TIPlayListRealm {
+
+		let obj = TIPlayListRealm()
+		obj.title = title
+		obj.subTitle = subTitle
+		obj.imageUrlStr = imageUrlStr
+		obj.parentNodeKey = parentNodeKey
+
+		let items = playItems.map { $0.convert() }
+		for item in items {
+			obj.playItems.append(item)
+		}
+		return obj
+	}
+}

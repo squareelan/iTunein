@@ -108,7 +108,7 @@ final class TIBrowseViewModel {
 
 	// MARK: Private
 	private func loadLink(
-		with service: TINetworkService,
+		with service: NetworkService,
 		path: String,
 		title temporaryTitle: String?
 		) {
@@ -131,7 +131,7 @@ final class TIBrowseViewModel {
 		}
 	}
 
-	private func loadAudio(with service: TINetworkService, path: String) {
+	private func loadAudio(with service: NetworkService, path: String) {
 
 		self.activityCount.value += 1
 
@@ -145,6 +145,8 @@ final class TIBrowseViewModel {
 			case .success(var value):
 				value.title = self.chosenItem?.text
 				value.imageUrlStr = self.chosenItem?.image
+				value.subTitle = self.chosenItem?.subtext
+				value.parentNodeKey = self.chosenItem?.nowPlayingId
 				self.newAudioItems.value = value
 
 			case .failure(let error): print(error)

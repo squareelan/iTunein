@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-struct TIBrowse: JsonDeserializable {
+struct TIBrowse: JsonDecodable {
 
 	let title: String?
 	let outlines: [TIOutline]!
@@ -53,7 +53,7 @@ enum TIOutlineType: String {
 }
 
 
-struct TIOutline: JsonDeserializable {
+struct TIOutline: JsonDecodable {
 
 	struct Constants {
 		static let MORE_STATIONS_KEY = "nextStations"

@@ -51,7 +51,7 @@ final class TILoadingViewController: UIViewController {
 
 	// MARK: - Network Request - Move to viewModel if create one.
 
-	func fetchBrowseMenu(with service: TINetworkService, path: String) {
+	func fetchBrowseMenu(with service: NetworkService, path: String) {
 
 		service.simpleTIGetRequest(
 			with: path
