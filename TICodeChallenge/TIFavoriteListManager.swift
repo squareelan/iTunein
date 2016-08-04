@@ -11,7 +11,7 @@ import RealmSwift
 
 struct TIFavoriteListManager: FavoriteListService {
 
-	private let queue = dispatch_queue_create("com.codechallenge.realm", nil)
+	private let queue = dispatch_queue_create("com.ituneIn.realmBackground", nil)
 
 	func toggleFavorite(
 		list: TIPlayList,
@@ -115,6 +115,9 @@ struct TIFavoriteListManager: FavoriteListService {
 			do {
 				let realm = try Realm()
 
+                // realm object can only be deleted, if object is
+                // fetched from same Realm. So grabbing object switch
+                // its primary key and delete.
 				if let key = list.parentNodeKey,
 				   let object = realm.objects(TIPlayListRealm.self)
 						.filter("parentNodeKey = '\(key)'").first {

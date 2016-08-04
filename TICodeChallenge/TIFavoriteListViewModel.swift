@@ -11,12 +11,14 @@ import UIKit
 import RxSwift
 
 final class TIFavoriteListViewModel: NSObject {
+
 	let favoriteListManager =
 		(UIApplication.sharedApplication().delegate as! TIAppDelegate).favoriteListManager
 	let networkService =
 		(UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
 
 	private (set) var favoritePlayLists = Variable<[TIPlayList]>([])
+
 
 	func fetchFavoriteLists(with service: FavoriteListService) {
 
@@ -35,10 +37,14 @@ final class TIFavoriteListViewModel: NSObject {
 		}
 	}
 
-	// MARK: - Network Request -
+	// MARK: - Network Request
 
 	// MARK: Public
-	func loadImage(with service: NetworkService, urlString: String, completion: Result<UIImage> -> ()) {
+	func loadImage(
+        with service: NetworkService,
+             urlString: String,
+             completion: Result<UIImage> -> ()
+        ) {
 
 		// fetch image from URL.
 		service.imageDownloadRequest(with: urlString) { result in

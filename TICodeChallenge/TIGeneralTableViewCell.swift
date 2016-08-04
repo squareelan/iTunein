@@ -1,5 +1,5 @@
 //
-//  TIBrowseTableViewCell.swift
+//  TIGeneralTableViewCell.swift
 //  TICodeChallenge
 //
 //  Created by Ian on 7/30/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TIBrowseTableViewCell: UITableViewCell {
+class TIGeneralTableViewCell: UITableViewCell {
 
 	@IBOutlet private (set) var thumbNailImageView: UIImageView!
 	@IBOutlet private (set) var titleLabel: UILabel!

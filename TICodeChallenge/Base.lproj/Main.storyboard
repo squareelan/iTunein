@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dJp-ct-8NO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dJp-ct-8NO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -10,7 +10,7 @@
         <!--Loading View Controller-->
         <scene sceneID="CW2-gy-58n">
             <objects>
-                <viewController id="dJp-ct-8NO" customClass="TILoadingViewController" customModule="TuneOut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dJp-ct-8NO" customClass="TILoadingViewController" customModule="iTuneIn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="liF-8h-9iL"/>
                         <viewControllerLayoutGuide type="bottom" id="XyK-U7-rMs"/>
@@ -19,14 +19,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TuneIn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-84-1FH">
-                                <rect key="frame" x="260" y="234" width="81" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iTuneIn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-84-1FH">
+                                <rect key="frame" x="257" y="234" width="87" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-Dq-epX">
-                                <rect key="frame" x="250" y="275" width="101" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coding Challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-Dq-epX">
+                                <rect key="frame" x="243" y="275" width="115" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accepted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEw-Si-lbh">
+                                <rect key="frame" x="269" y="300" width="62" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -52,7 +58,9 @@
                         <color key="backgroundColor" red="0.85882352939999995" green="0.41176470590000003" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kTr-Dq-epX" firstAttribute="top" secondItem="7Sv-84-1FH" secondAttribute="bottom" constant="8" id="9u7-77-Wnr"/>
+                            <constraint firstItem="QEw-Si-lbh" firstAttribute="centerX" secondItem="gJb-wO-DqH" secondAttribute="centerX" id="BIK-0C-LMe"/>
                             <constraint firstItem="XyK-U7-rMs" firstAttribute="top" secondItem="LFq-oR-5qr" secondAttribute="bottom" constant="20" id="DMx-Sd-baM"/>
+                            <constraint firstItem="QEw-Si-lbh" firstAttribute="top" secondItem="kTr-Dq-epX" secondAttribute="bottom" constant="8" id="La3-dg-i0m"/>
                             <constraint firstItem="LFq-oR-5qr" firstAttribute="top" secondItem="7Sv-84-1FH" secondAttribute="bottom" constant="263" id="W0w-mq-Jyx"/>
                             <constraint firstItem="kTr-Dq-epX" firstAttribute="centerX" secondItem="gJb-wO-DqH" secondAttribute="centerX" id="dEA-ms-L3T"/>
                             <constraint firstItem="LFq-oR-5qr" firstAttribute="centerX" secondItem="gJb-wO-DqH" secondAttribute="centerX" id="dpW-1e-FfP"/>
@@ -67,6 +75,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="iI8-tW-RAe"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="subtitleLabel" destination="kTr-Dq-epX" id="1Aj-EK-KKA"/>
+                        <outlet property="subtitleLabel2" destination="QEw-Si-lbh" id="l7M-Vf-R4A"/>
+                        <outlet property="titleLabel" destination="7Sv-84-1FH" id="6AQ-La-V0k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6t-xK-bet" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,7 +105,7 @@
         <!--Favorite-->
         <scene sceneID="3fJ-1l-spd">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xBE-bP-3I1" customClass="TIFavoriteListViewController" customModule="TuneOut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xBE-bP-3I1" customClass="TIFavoriteListViewController" customModule="iTuneIn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lQv-zv-Fs5"/>
                         <viewControllerLayoutGuide type="bottom" id="yic-LG-csa"/>
@@ -106,7 +119,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.85882352939999995" green="0.41176470590000003" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TIBrowseTableViewCell" rowHeight="76" id="PWr-OC-0Lx" customClass="TIBrowseTableViewCell" customModule="TuneOut" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TIGeneralTableViewCell" rowHeight="76" id="PWr-OC-0Lx" customClass="TIGeneralTableViewCell" customModule="iTuneIn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWr-OC-0Lx" id="X7J-KJ-FqO">
@@ -228,7 +241,7 @@
         <!--Browse-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="TIBrowseViewController" id="BYZ-38-t0r" customClass="TIBrowseViewController" customModule="TuneOut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TIBrowseViewController" id="BYZ-38-t0r" customClass="TIBrowseViewController" customModule="iTuneIn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -242,7 +255,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.85882352939999995" green="0.41176470590000003" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TIBrowseTableViewCell" rowHeight="76" id="upK-ql-5t8" customClass="TIBrowseTableViewCell" customModule="TuneOut" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TIGeneralTableViewCell" rowHeight="76" id="upK-ql-5t8" customClass="TIGeneralTableViewCell" customModule="iTuneIn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="upK-ql-5t8" id="v1e-6b-knq">
@@ -331,7 +344,7 @@
         <!--Audio Player View Controller-->
         <scene sceneID="SJU-mx-g3F">
             <objects>
-                <viewController storyboardIdentifier="TIAudioPlayerViewController" id="cSn-SE-r4Z" customClass="TIAudioPlayerViewController" customModule="TuneOut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TIAudioPlayerViewController" id="cSn-SE-r4Z" customClass="TIAudioPlayerViewController" customModule="iTuneIn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8h4-do-yih"/>
                         <viewControllerLayoutGuide type="bottom" id="InK-WG-81M"/>

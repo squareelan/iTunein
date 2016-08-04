@@ -15,19 +15,19 @@ enum BrowseViewError: ErrorType {
 
 final class TIBrowseViewModel {
 
+    // later change this to be injected for testibility, and more abstraction.
 	let networkService =
-		(UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
+        (UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
 
 	// Core data
 	let browseItem: TIBrowse
 	var chosenItem: TIOutline? = nil
 
 	var title: Variable<String?>
-	var activityCount = Variable<Int>(0)
-	var newBrowseItem = Variable<TIBrowse?>(nil)
-	var newAudioItems = Variable<TIPlayList?>(nil)
-	var errorEvent = Variable<ErrorType?>(nil)
-
+	private (set) var activityCount = Variable<Int>(0)
+	private (set) var newBrowseItem = Variable<TIBrowse?>(nil)
+	private (set) var newAudioItems = Variable<TIPlayList?>(nil)
+	private (set) var errorEvent = Variable<ErrorType?>(nil)
 
 	var numberOfSections: Int {
 		// if outline item have children, use it for a row.
@@ -36,11 +36,13 @@ final class TIBrowseViewModel {
 			browseItem.outlines.count : 1
 	}
 
+    // MARK: - Initializer
 	init(browseItem: TIBrowse, title: Variable<String?>) {
 		self.browseItem = browseItem
 		self.title = title
 	}
 
+    // MARK: - Public Method
 	func numberOfRows(for section: Int) -> Int {
 		if let children = browseItem.outlines[section].children {
 			return children.count
@@ -75,15 +77,19 @@ final class TIBrowseViewModel {
 	// MARK: - Network Request -
 
 	// MARK: Public
-	func loadImage(with urlString: String, completion: Result<UIImage> -> ()) {
+    func loadImage(
+        with service: NetworkService,
+             urlString: String,
+             completion: Result<UIImage> -> ()
+        ) {
 
 		// fetch image from URL.
-		networkService.imageDownloadRequest(with: urlString) { result in
+		service.imageDownloadRequest(with: urlString) { result in
 			completion(result)
 		}
 	}
 
-	func loadRequest(for section: Int, row: Int) {
+    func loadRequest(for section: Int, row: Int, service: NetworkService) {
 
 		let item = outline(for: section, row: row)
 		chosenItem = item     // saving for later reference
@@ -95,10 +101,10 @@ final class TIBrowseViewModel {
 
 		switch item.type {
 		case .link:
-			loadLink(with: networkService, path: path, title: item.text)
+			loadLink(with: service, path: path, title: item.text)
 
 		case .audio:
-			loadAudio(with: networkService, path: path)
+			loadAudio(with: service, path: path)
 
 		case .undefined:
 			self.errorEvent.value = BrowseViewError.undefinedType

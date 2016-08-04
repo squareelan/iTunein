@@ -38,65 +38,51 @@ final class TIAudioPlayerViewController: UIViewController {
         super.viewDidLoad()
 
 		// Configuring initial view state
-
-		// if there is no selected item, don't initialize.
-		if audioManager.playList.playItems.count <= 0 {
-			noItemView.hidden = false
-		}
-
-		// sets up title, cover image, and binding.
-		else {
-			titleLabel.text = audioManager.playList.title
-			loadCoverImage(
-				with: networkService,
-				urlString: audioManager.playList.imageUrlStr
-			)
-
-			favoriteListManager.getList { result in
-				switch result {
-				case .success(let favoriteLists):
-					let isMatching = favoriteLists.filter {
-						$0.parentNodeKey == self.audioManager.playList.parentNodeKey
-					}.count > 0
-					self.favoriteButton.selected = isMatching
-
-				case .failure:
-					let alert = UIAlertController.create(with: nil, message: "Failed to get status")
-					alert.show()
-				}
-			}
-
-			setUpRx()
-			
-			NSNotificationCenter.defaultCenter().addObserver(
-				self,
-				selector: #selector(TIAudioPlayerViewController.pauseAudio),
-				name: AVPlayerItemDidPlayToEndTimeNotification,
-				object: nil
-			)
-		}
+		setUpIntialState()
     }
 
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 
-	func loadCoverImage(with service: NetworkService, urlString: String?) {
-		guard let urlStr = urlString else {
-			coverImageView.image = UIImage(named: "tuneout")
-			return
-		}
+    func setUpIntialState() {
+        // if there is no selected item, don't initialize.
+        if audioManager.playList.playItems.count <= 0 {
+            noItemView.hidden = false
+        }
 
-		service.imageDownloadRequest(with: urlStr) { [weak self] result in
-			switch result {
-			case .success(let image):
-				self?.coverImageView.image = image
+            // sets up title, cover image, and binding.
+        else {
+            titleLabel.text = audioManager.playList.title
+            loadCoverImage(
+                with: networkService,
+                urlString: audioManager.playList.imageUrlStr
+            )
 
-			case .failure(let error):
-				print(error)
-			}
-		}
-	}
+            favoriteListManager.getList { result in
+                switch result {
+                case .success(let favoriteLists):
+                    let isMatching = favoriteLists.filter {
+                        $0.parentNodeKey == self.audioManager.playList.parentNodeKey
+                        }.count > 0
+                    self.favoriteButton.selected = isMatching
+
+                case .failure:
+                    let alert = UIAlertController.create(with: nil, message: "Failed to get status")
+                    alert.show()
+                }
+            }
+
+            setUpRx()
+
+            NSNotificationCenter.defaultCenter().addObserver(
+                self,
+                selector: #selector(TIAudioPlayerViewController.pauseAudio),
+                name: AVPlayerItemDidPlayToEndTimeNotification,
+                object: nil
+            )
+        }
+    }
 
 	// MARK: - Public method
 	func playAudio() {
@@ -107,7 +93,27 @@ final class TIAudioPlayerViewController: UIViewController {
 		audioManager.pause()
 	}
 
-	// MARK: - IBAction
+    // MARK: - Private method
+
+    // MARK: Network Request
+    private func loadCoverImage(with service: NetworkService, urlString: String?) {
+        guard let urlStr = urlString else {
+            coverImageView.image = UIImage(named: "tuneout")
+            return
+        }
+
+        service.imageDownloadRequest(with: urlStr) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.coverImageView.image = image
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+	// MARK: IBAction
 	@IBAction private func dismiss(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -157,6 +163,7 @@ final class TIAudioPlayerViewController: UIViewController {
 	}
 }
 
+// MARK: - ReactiveView
 extension TIAudioPlayerViewController: ReactiveView {
 
 	// TODO: create ViewModel instead of directly binding with audioManager

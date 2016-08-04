@@ -51,6 +51,7 @@ final class TIBrowseViewController: UIViewController {
 	}
 }
 
+// MARK: - ReactiveView
 extension TIBrowseViewController: ReactiveView {
 	
 	func setUpRx() {
@@ -106,8 +107,6 @@ extension TIBrowseViewController: ReactiveView {
 					= UIStoryboard.mainStoryboard().instantiateViewController()
 				let audioManager = (UIApplication.sharedApplication().delegate as! TIAppDelegate).audioManager
 				audioManager.playList = audioItems!
-//				audioManager.albumImageUrl.value = self?.viewModel.chosenItem?.image
-//				audioManager.title.value = self?.viewModel.chosenItem?.text
 
 				self?.presentViewController(player, animated: true, completion: nil)
 			}.addDisposableTo(disposeBag)
@@ -127,8 +126,7 @@ extension TIBrowseViewController: ReactiveView {
 	}
 }
 
-// MARK: - UITableView
-
+// MARK: - UITableViewDataSource
 extension TIBrowseViewController: UITableViewDataSource {
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -159,7 +157,7 @@ extension TIBrowseViewController: UITableViewDataSource {
 		let row = indexPath.row
 		let outline = viewModel.outline(for: section, row: row)
 
-		let cell: TIBrowseTableViewCell = tableView.dequeueResuableCell(forIndexPath: indexPath)
+		let cell: TIGeneralTableViewCell = tableView.dequeueResuableCell(forIndexPath: indexPath)
 
 		let title = outline.text
 		cell.titleLabel!.text = title
@@ -183,7 +181,11 @@ extension TIBrowseViewController: UITableViewDataSource {
 			cell.thumbNailImageView.tag = tag
 
 			// fetch image from URL.
-			viewModel.loadImage(with: imageURL) { result in
+            viewModel.loadImage(
+                with: viewModel.networkService,
+                urlString: imageURL
+            ) { result in
+
 				switch result {
 				case .success(let image):
 					if cell.thumbNailImageView.tag == tag {
@@ -203,13 +205,18 @@ extension TIBrowseViewController: UITableViewDataSource {
 	}
 }
 
+// MARK: - UITableViewDelegate
 extension TIBrowseViewController: UITableViewDelegate {
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-		viewModel.loadRequest(for: indexPath.section, row: indexPath.row)
+        viewModel.loadRequest(
+            for: indexPath.section,
+            row: indexPath.row,
+            service: viewModel.networkService
+        )
 	}
 }
 

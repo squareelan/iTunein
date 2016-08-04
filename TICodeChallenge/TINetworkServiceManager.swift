@@ -23,11 +23,12 @@ enum TINetworkError: ErrorType {
 	case invalidURL
 	case invalidBody
 
-	static let TINetworkErrorDomain = "com.SQuareElan.TINetworkService"
+	static let TINetworkErrorDomain = "com.ituneIn.TINetworkService"
 }
 
 final class TINetworkServiceManager: NetworkService {
 
+    // Limitation: cannot return collection as result.
 	func simpleTIGetRequest<T: JsonDecodable>(
 		with urlString: String,
 		callback: (Result<T>) -> Void
@@ -101,7 +102,6 @@ final class TINetworkServiceManager: NetworkService {
 		urlRequest.HTTPMethod = HTTPMethod.GET.description
 
 		let headers = [
-//			"Accept": "application/json",
 			"Accept-Encoding" : "gzip",
 			"Content-Type": "image/*"
 			]
@@ -136,6 +136,7 @@ final class TINetworkServiceManager: NetworkService {
 		return dataTask
 	}
 
+    // Limitation: cannot return collection as result.
 	func request<T: JsonDecodable>(
 		with url: NSURL,
 		method: HTTPMethod,

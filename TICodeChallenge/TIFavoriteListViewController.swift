@@ -12,11 +12,11 @@ import RxSwift
 
 class TIFavoriteListViewController: UIViewController {
 
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet private var tableView: UITableView!
 	var viewModel = TIFavoriteListViewModel()
 	private let disposeBag = DisposeBag()
 
-
+    // MARK: - View life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -34,6 +34,7 @@ class TIFavoriteListViewController: UIViewController {
 
 }
 
+// MARK: - ReactiveView
 extension TIFavoriteListViewController: ReactiveView {
 
 	func setUpRx() {
@@ -48,8 +49,7 @@ extension TIFavoriteListViewController: ReactiveView {
 	}
 }
 
-// MARK: - UITableView
-
+// MARK: - UITableViewDataSource
 extension TIFavoriteListViewController: UITableViewDataSource {
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,7 +62,7 @@ extension TIFavoriteListViewController: UITableViewDataSource {
 		) -> UITableViewCell {
 
 		let playList = viewModel.favoritePlayLists.value[indexPath.row]
-		let cell: TIBrowseTableViewCell = tableView.dequeueResuableCell(forIndexPath: indexPath)
+		let cell: TIGeneralTableViewCell = tableView.dequeueResuableCell(forIndexPath: indexPath)
 
 		cell.titleLabel!.text = playList.title
 
@@ -99,16 +99,15 @@ extension TIFavoriteListViewController: UITableViewDataSource {
 		else {
 			cell.thumbNailImageView.hidden = true
 		}
-
 		return cell
 	}
 
 	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return CGFloat.min
 	}
-
 }
 
+// MARK: - UITableViewDelegate
 extension TIFavoriteListViewController: UITableViewDelegate {
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

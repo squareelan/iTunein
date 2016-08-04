@@ -11,11 +11,15 @@ import RxSwift
 
 final class TILoadingViewController: UIViewController {
 
-	// TODO: create static constants
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var subtitleLabel: UILabel!
+    @IBOutlet private var subtitleLabel2: UILabel!
+
+    private var animated = false
+    private var nextViewController: UIViewController?
 	private let path = "http://opml.radiotime.com/"
 
-	// MARK: - View Life Cycle
-
+	// MARK: - View life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.setNavigationBarHidden(true, animated: false)
@@ -23,34 +27,56 @@ final class TILoadingViewController: UIViewController {
 		let networkService =
 			(UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
 
+        doFirstLoadingAnimation()
+
 		// load data for next view
 		fetchBrowseMenu(with: networkService, path: path)
 	}
 
-//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//		if segue.identifier == SegueIdentifier.showMainPage {
-//			guard let viewModel = sender as? TIBrowseViewModel else {
-//				// non recoverable
-//				fatalError("Can't instantiate main page. Missing ViewModel...")
-//			}
-//
-//			guard let destination = segue.destinationViewController as? UITabBarController else {
-//				// non recoverable
-//				fatalError("Wrong destination view controller is fetched. Expecting UITabBarController")
-//			}
-//
-//			for vc in destination.viewControllers! {
-//				if let vc = vc as? TIBrowseViewController {
-//					vc.viewModel = viewModel
-//					destination.selectedViewController = vc
-//					break
-//				}
-//			}
-//		}
-//	}
+    func doFirstLoadingAnimation() {
+        subtitleLabel.transform.ty += 50
+        subtitleLabel2.transform.ty -= 50
+
+        UIView.animateWithDuration(
+            1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 0,
+            options: .CurveEaseOut,
+            animations: {
+
+            self.subtitleLabel.transform.ty -= 50
+            self.subtitleLabel2.transform.ty += 50
+        }) { complete in
+
+            // if loading is finished, before animation is done.
+            // do second animation here
+            if let vc = self.nextViewController {
+                self.doSecondLoadingAnimation {
+                    (UIApplication.sharedApplication().delegate as! TIAppDelegate)
+                        .window?.rootViewController = vc
+                }
+            }
+            self.animated = true
+        }
+    }
+
+    func doSecondLoadingAnimation(completion: () -> Void) {
+        UIView.animateWithDuration(1.0, animations: {
+            self.titleLabel.alpha = 0
+            self.subtitleLabel.alpha = 0
+
+            self.titleLabel.transform.ty -= 300
+            self.subtitleLabel.transform.ty -= 300
+            self.subtitleLabel2.transform.ty += 300
+
+            self.view.backgroundColor = UIColor.whiteColor()
+        }, completion:  { finished in
+            completion()
+        })
+    }
 
 	// MARK: - Network Request - Move to viewModel if create one.
-
 	func fetchBrowseMenu(with service: NetworkService, path: String) {
 
 		service.simpleTIGetRequest(
@@ -59,7 +85,6 @@ final class TILoadingViewController: UIViewController {
 
 			switch result {
 			case .success(let value):
-
 				guard let tabBarController = UIStoryboard.mainStoryboard()
 					.instantiateViewControllerWithIdentifier(
 						TabBarControllerIdentifier.rootTabBar) as? UITabBarController,
@@ -76,15 +101,17 @@ final class TILoadingViewController: UIViewController {
 					title: Variable<String?>(value.title)
 				)
 				topVc.viewModel = newViewModel
+                self?.nextViewController = tabBarController
 
-				(UIApplication.sharedApplication().delegate as! TIAppDelegate)
-					.window?.rootViewController = tabBarController
+                // if first animation is done, proceed and do second
+                if self?.animated == true {
+                    self?.doSecondLoadingAnimation {
+                        (UIApplication.sharedApplication().delegate as! TIAppDelegate)
+                            .window?.rootViewController = tabBarController
+                    }
+                }
 
-			case .failure(let error):
-
-				// TODO: change to debug print
-				print(error)
-
+			case .failure:
 				// probably better to handle recoverable and non-recoverable error differently
 				// providing retry option for recoverable error would
 				let title = "Network Error".localizedString
@@ -97,7 +124,6 @@ final class TILoadingViewController: UIViewController {
 						self?.fetchBrowseMenu(with: service, path: path)
 					}
 				)
-
 				alert.show()
 			}
 		}

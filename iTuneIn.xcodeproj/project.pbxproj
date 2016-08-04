@@ -26,7 +26,7 @@
 		3C7B27EA1D4D6CE7001D03DD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */; };
 		3C7B27EE1D4DA19C001D03DD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27ED1D4DA19C001D03DD /* UITableView+Extension.swift */; };
 		3C7B27F01D4DA211001D03DD /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27EF1D4DA211001D03DD /* Identifiable.swift */; };
-		3C7B27F21D4DA65B001D03DD /* TIBrowseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */; };
+		3C7B27F21D4DA65B001D03DD /* TIGeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B27F11D4DA65B001D03DD /* TIGeneralTableViewCell.swift */; };
 		3C8C54061D4C57AB0028C099 /* TIAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */; };
 		3C8C540B1D4C57AB0028C099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C54091D4C57AB0028C099 /* Main.storyboard */; };
 		3C8C540D1D4C57AB0028C099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C8C540C1D4C57AB0028C099 /* Assets.xcassets */; };
@@ -49,6 +49,7 @@
 		3C92A61A1D52924B002C1FB7 /* AudioPlaybackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C92A6191D52924B002C1FB7 /* AudioPlaybackService.swift */; };
 		3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */; };
 		40A69AAF4E7342B5E0148D95 /* Pods_iTuneIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D481CA12C2077EB12ABB3 /* Pods_iTuneIn.framework */; };
+		CC2536A01D53A5E2005DA458 /* TIOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC25369F1D53A5E2005DA458 /* TIOutline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +83,7 @@
 		3C7B27E81D4D6CE7001D03DD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27ED1D4DA19C001D03DD /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		3C7B27EF1D4DA211001D03DD /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIBrowseTableViewCell.swift; sourceTree = "<group>"; };
+		3C7B27F11D4DA65B001D03DD /* TIGeneralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIGeneralTableViewCell.swift; sourceTree = "<group>"; };
 		3C8C54021D4C57AB0028C099 /* iTuneIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTuneIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8C54051D4C57AB0028C099 /* TIAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIAppDelegate.swift; sourceTree = "<group>"; };
 		3C8C540A1D4C57AB0028C099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		A966FDC407E37C55094C3F8D /* Pods_iTuneInTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTuneInTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB861B82B449872DB41DA8C /* Pods-iTuneInTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTuneInTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTuneInTests/Pods-iTuneInTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB382A5E96CAB2583EA5585F /* Pods-iTuneInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTuneInTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTuneInTests/Pods-iTuneInTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC25369F1D53A5E2005DA458 /* TIOutline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIOutline.swift; sourceTree = "<group>"; };
 		CDC8D39105B7152E27A4BA4A /* Pods-iTuneIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTuneIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTuneIn/Pods-iTuneIn.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 			children = (
 				3C4EF39D1D4FF84900FB651F /* Realm */,
 				3C8C54341D4C6B2D0028C099 /* TIBrowse.swift */,
+				CC25369F1D53A5E2005DA458 /* TIOutline.swift */,
 				3C72A2251D52E410003F76D9 /* TIPlaylist.swift */,
 				3C35F8B41D504393001EEA6E /* TIPlayItem.swift */,
 			);
@@ -193,7 +196,7 @@
 		3C7B27F31D4DA98C001D03DD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3C7B27F11D4DA65B001D03DD /* TIBrowseTableViewCell.swift */,
+				3C7B27F11D4DA65B001D03DD /* TIGeneralTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -231,7 +234,6 @@
 				3C8C544C1D4CED8E0028C099 /* Theme */,
 				3C8C54451D4CEC5C0028C099 /* Extension+Protocol */,
 				3C8C54471D4CEC910028C099 /* Support File */,
-				3C72A22F1D538CB7003F76D9 /* Operators.swift */,
 			);
 			path = TICodeChallenge;
 			sourceTree = "<group>";
@@ -297,6 +299,7 @@
 		3C8C54471D4CEC910028C099 /* Support File */ = {
 			isa = PBXGroup;
 			children = (
+				3C72A22F1D538CB7003F76D9 /* Operators.swift */,
 				3C8C540C1D4C57AB0028C099 /* Assets.xcassets */,
 				3C8C54111D4C57AB0028C099 /* Info.plist */,
 				3C8C54431D4CEC540028C099 /* Localizable.strings */,
@@ -554,7 +557,7 @@
 				3C8C54421D4CEB490028C099 /* String+Extension.swift in Sources */,
 				3C8C54311D4C638A0028C099 /* HttpMethod.swift in Sources */,
 				3C8C544E1D4CEEAE0028C099 /* Theme.swift in Sources */,
-				3C7B27F21D4DA65B001D03DD /* TIBrowseTableViewCell.swift in Sources */,
+				3C7B27F21D4DA65B001D03DD /* TIGeneralTableViewCell.swift in Sources */,
 				3C8C54331D4C66A90028C099 /* JsonDecodable.swift in Sources */,
 				3C4EF39A1D4FDB5F00FB651F /* TIAudioPlayerViewController.swift in Sources */,
 				3C72A2301D538CB7003F76D9 /* Operators.swift in Sources */,
@@ -564,6 +567,7 @@
 				3C72A2201D52DC3F003F76D9 /* FavoriteListService.swift in Sources */,
 				3C8C54501D4D1A610028C099 /* TIBrowseViewModel.swift in Sources */,
 				3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */,
+				CC2536A01D53A5E2005DA458 /* TIOutline.swift in Sources */,
 				3C72A2221D52DC49003F76D9 /* TIFavoriteListManager.swift in Sources */,
 				3C48EFC71D4E97DC00A250C2 /* UIAlertController+Extension.swift in Sources */,
 				3C8C542D1D4C606B0028C099 /* TINetworkServiceManager.swift in Sources */,
