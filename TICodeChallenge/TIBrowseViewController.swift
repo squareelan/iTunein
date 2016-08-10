@@ -123,6 +123,41 @@ extension TIBrowseViewController: ReactiveView {
 				let alert = UIAlertController.getGeneralNetworkErrorAlert()
 				self?.presentViewController(alert, animated: true, completion: nil)
 			}.addDisposableTo(disposeBag)
+
+
+
+		viewModel
+			.showDownloadPopup
+			.asObservable()
+			.filter { $0 == true }
+			.debug("Download Pop up")
+			.observeOn(MainScheduler.instance)
+			.subscribeNext { [weak self] _ in
+				self?.viewModel.showDownloadPopup.value = false
+
+				let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+				let playAction = UIAlertAction(title: "Play", style: .Default) { _ in
+					guard let service = self?.viewModel.networkService,
+						let path = self?.viewModel.chosenItem?.URL else {
+						return
+					}
+					self?.viewModel.loadAudio(with: service, path: path)
+				}
+
+				let downloadAction = UIAlertAction(title: "Download", style: .Default) { _ in
+
+					guard let service = self?.viewModel.downloadService,
+						let path = self?.viewModel.chosenItem?.URL,
+						let id = self?.viewModel.chosenItem?.nowPlayingId else {
+							return
+					}
+
+					self?.viewModel.downloadAudio(with: service, path: path, id: id)
+				}
+				alert.addAction(playAction)
+				alert.addAction(downloadAction)
+				self?.presentViewController(alert, animated: true, completion: nil)
+			}.addDisposableTo(disposeBag)
 	}
 }
 

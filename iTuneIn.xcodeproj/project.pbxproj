@@ -48,6 +48,9 @@
 		3C92A6181D5290CE002C1FB7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C92A6171D5290CE002C1FB7 /* NetworkService.swift */; };
 		3C92A61A1D52924B002C1FB7 /* AudioPlaybackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C92A6191D52924B002C1FB7 /* AudioPlaybackService.swift */; };
 		3CD156001D511B7800EEF772 /* TIAudioPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */; };
+		3CD9AC001D5BA31F00EDA707 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9ABFF1D5BA31F00EDA707 /* DownloadService.swift */; };
+		3CD9AC021D5BA33400EDA707 /* TIDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9AC011D5BA33400EDA707 /* TIDownloadManager.swift */; };
+		3CD9AC051D5BA38C00EDA707 /* TIAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9AC041D5BA38C00EDA707 /* TIAudio.swift */; };
 		40A69AAF4E7342B5E0148D95 /* Pods_iTuneIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D481CA12C2077EB12ABB3 /* Pods_iTuneIn.framework */; };
 		CC2536A01D53A5E2005DA458 /* TIOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC25369F1D53A5E2005DA458 /* TIOutline.swift */; };
 /* End PBXBuildFile section */
@@ -109,6 +112,9 @@
 		3C92A6171D5290CE002C1FB7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3C92A6191D52924B002C1FB7 /* AudioPlaybackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlaybackService.swift; sourceTree = "<group>"; };
 		3CD155FF1D511B7800EEF772 /* TIAudioPlaybackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIAudioPlaybackManager.swift; sourceTree = "<group>"; };
+		3CD9ABFF1D5BA31F00EDA707 /* DownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		3CD9AC011D5BA33400EDA707 /* TIDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIDownloadManager.swift; sourceTree = "<group>"; };
+		3CD9AC041D5BA38C00EDA707 /* TIAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIAudio.swift; sourceTree = "<group>"; };
 		A966FDC407E37C55094C3F8D /* Pods_iTuneInTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTuneInTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB861B82B449872DB41DA8C /* Pods-iTuneInTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTuneInTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTuneInTests/Pods-iTuneInTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB382A5E96CAB2583EA5585F /* Pods-iTuneInTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTuneInTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iTuneInTests/Pods-iTuneInTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -256,6 +262,7 @@
 				3C8C542E1D4C62560028C099 /* Result.swift */,
 				3C8C54301D4C638A0028C099 /* HttpMethod.swift */,
 				3C8C54321D4C66A90028C099 /* JsonDecodable.swift */,
+				3CD9AC031D5BA37E00EDA707 /* Download */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -315,6 +322,16 @@
 				3C8C544A1D4CED890028C099 /* TIThemeManager.swift */,
 			);
 			name = Theme;
+			sourceTree = "<group>";
+		};
+		3CD9AC031D5BA37E00EDA707 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				3CD9ABFF1D5BA31F00EDA707 /* DownloadService.swift */,
+				3CD9AC011D5BA33400EDA707 /* TIDownloadManager.swift */,
+				3CD9AC041D5BA38C00EDA707 /* TIAudio.swift */,
+			);
+			name = Download;
 			sourceTree = "<group>";
 		};
 		4DB3EAAA6B1331F4930900BD /* Frameworks */ = {
@@ -545,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7B27EA1D4D6CE7001D03DD /* UIViewController+Extension.swift in Sources */,
+				3CD9AC051D5BA38C00EDA707 /* TIAudio.swift in Sources */,
 				3C8C54371D4C8B600028C099 /* TILoadingViewController.swift in Sources */,
 				3C8C542F1D4C62560028C099 /* Result.swift in Sources */,
 				3C72A2281D52E759003F76D9 /* TIPlayItemRealm.swift in Sources */,
@@ -554,7 +572,9 @@
 				3C8C54401D4CEB240028C099 /* UIColor+Extension.swift in Sources */,
 				3C72A2261D52E410003F76D9 /* TIPlaylist.swift in Sources */,
 				3C35F8B51D504393001EEA6E /* TIPlayItem.swift in Sources */,
+				3CD9AC001D5BA31F00EDA707 /* DownloadService.swift in Sources */,
 				3C8C54421D4CEB490028C099 /* String+Extension.swift in Sources */,
+				3CD9AC021D5BA33400EDA707 /* TIDownloadManager.swift in Sources */,
 				3C8C54311D4C638A0028C099 /* HttpMethod.swift in Sources */,
 				3C8C544E1D4CEEAE0028C099 /* Theme.swift in Sources */,
 				3C7B27F21D4DA65B001D03DD /* TIGeneralTableViewCell.swift in Sources */,

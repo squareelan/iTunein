@@ -16,6 +16,7 @@ class TIAppDelegate: UIResponder, UIApplicationDelegate {
 	let networkService = TINetworkServiceManager()
 	let audioManager = TIAudioPlaybackManager(playList: TIPlayList(playItems: []))
 	let favoriteListManager = TIFavoriteListManager()
+	let downloadManager = TIDownloadManager()
 
 	func application(
 		application: UIApplication,

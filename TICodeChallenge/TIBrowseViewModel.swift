@@ -19,6 +19,9 @@ final class TIBrowseViewModel {
 	let networkService =
         (UIApplication.sharedApplication().delegate as! TIAppDelegate).networkService
 
+	let downloadService =
+		(UIApplication.sharedApplication().delegate as! TIAppDelegate).downloadManager
+
 	// Core data
 	let browseItem: TIBrowse
 	var chosenItem: TIOutline? = nil
@@ -28,6 +31,8 @@ final class TIBrowseViewModel {
 	private (set) var newBrowseItem = Variable<TIBrowse?>(nil)
 	private (set) var newAudioItems = Variable<TIPlayList?>(nil)
 	private (set) var errorEvent = Variable<ErrorType?>(nil)
+
+	private (set) var showDownloadPopup = Variable<Bool>(false)
 
 	var numberOfSections: Int {
 		// if outline item have children, use it for a row.
@@ -104,7 +109,8 @@ final class TIBrowseViewModel {
 			loadLink(with: service, path: path, title: item.text)
 
 		case .audio:
-			loadAudio(with: service, path: path)
+			showDownloadPopup.value = true
+			//loadAudio(with: service, path: path)
 
 		case .undefined:
 			self.errorEvent.value = BrowseViewError.undefinedType
@@ -137,7 +143,7 @@ final class TIBrowseViewModel {
 		}
 	}
 
-	private func loadAudio(with service: NetworkService, path: String) {
+	func loadAudio(with service: NetworkService, path: String) {
 
 		self.activityCount.value += 1
 
@@ -159,5 +165,21 @@ final class TIBrowseViewModel {
 			self.errorEvent.value = error
 			}
 		}
+	}
+
+
+
+
+	func downloadAudio(with service: DownloadService, path: String, id: String) {
+		service.download(with: path, id: id) { result in
+			switch result {
+			case .success:
+				break
+			case .failure(let error):
+				print(error)
+				self.errorEvent.value = error
+			}
+		}
+
 	}
 }

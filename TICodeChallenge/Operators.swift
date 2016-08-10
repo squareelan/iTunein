@@ -72,22 +72,36 @@ func <-> (textInput: RxTextInput, variable: Variable<String>) -> Disposable {
 }
 
 func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
-
-	var updating = false
-
-	let bindToUIDisposable = variable.asObservable().filter({ _ in
-		updating = !updating
-		return updating
-	}).bindTo(property)
-
-	let bindToVariable = property.filter({ _ in
-		updating = !updating
-		return updating
-	}).subscribe(onNext: { n in
-		variable.value = n
-		}, onCompleted:  {
-			bindToUIDisposable.dispose()
-	})
+	let bindToUIDisposable = variable.asObservable()
+		.bindTo(property)
+	let bindToVariable = property
+		.subscribe(onNext: { n in
+			variable.value = n
+			}, onCompleted:  {
+				bindToUIDisposable.dispose()
+		})
 
 	return StableCompositeDisposable.create(bindToUIDisposable, bindToVariable)
 }
+
+//
+//func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
+//
+//	var updating = false
+//
+//	let bindToUIDisposable = variable.asObservable().filter({ _ in
+//		updating = !updating
+//		return updating
+//	}).bindTo(property)
+//
+//	let bindToVariable = property.filter({ _ in
+//		updating = !updating
+//		return updating
+//	}).subscribe(onNext: { n in
+//		variable.value = n
+//		}, onCompleted:  {
+//			bindToUIDisposable.dispose()
+//	})
+//
+//	return StableCompositeDisposable.create(bindToUIDisposable, bindToVariable)
+//}

@@ -66,6 +66,7 @@ struct TIFavoriteListManager: FavoriteListService {
 					items.append(item)
 				}
 
+				print("fetched")
 				dispatch_async(dispatch_get_main_queue()) {
 					completion(.success(items))
 				}
@@ -84,7 +85,6 @@ struct TIFavoriteListManager: FavoriteListService {
 		) {
 
 		dispatch_async(queue) {
-
 			do {
 				let realm = try Realm()
 
@@ -94,6 +94,7 @@ struct TIFavoriteListManager: FavoriteListService {
 				}
 				try realm.commitWrite()
 
+				print("updated")
 				dispatch_async(dispatch_get_main_queue()) {
 					completion(.success(true))
 				}
@@ -111,7 +112,6 @@ struct TIFavoriteListManager: FavoriteListService {
 		) {
 
 		dispatch_async(queue) {
-			
 			do {
 				let realm = try Realm()
 
@@ -126,6 +126,7 @@ struct TIFavoriteListManager: FavoriteListService {
 						realm.delete(object)
 					}
 
+					print("removed")
 					dispatch_async(dispatch_get_main_queue()) {
 						completion(.success(true))
 					}
