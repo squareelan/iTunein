@@ -39,20 +39,12 @@ final class TIDownloadManager: DownloadService {
 
 			let path =
 				NSSearchPathForDirectoriesInDomains(
-					.DownloadsDirectory,
+					.DocumentDirectory,
 					.UserDomainMask,
 					true
 				).first!
 			let itemPath = "\(path)/\(id)"
-			guard let itemUrl = NSURL(string: itemPath) else {
-
-				// error Handling
-				dispatch_async(dispatch_get_main_queue()) {
-					completion(.failure(DownloadError.generalError))
-				}
-				return
-			}
-
+			let itemUrl = NSURL(fileURLWithPath: itemPath)
 
 			if !fileManager.fileExistsAtPath(itemPath) {
 				do {
@@ -73,6 +65,7 @@ final class TIDownloadManager: DownloadService {
 				completion(.success(itemUrl))
 			}
 		}
+		task.resume()
 
 		return task
 	}
